@@ -24,7 +24,7 @@
         let columns = [{
                 name: 'product_id',     
                 label: 'Product Code',  
-                type: 'int',  // Data type is required 
+                type: 'number',  // Data type is required int float integer all are type number
                 width: '9em',
                 background: '#d3d3d345',
             }, {
