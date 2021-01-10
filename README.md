@@ -22,9 +22,9 @@
 
 ```javascript
         let columns = [{
-                name: 'product_id',
-                label: 'Product Code',
-                type: 'int',
+                name: 'product_id',     
+                label: 'Product Code',  
+                type: 'int',   
                 width: '9em',
                 background: '#d3d3d345',
             }, {
