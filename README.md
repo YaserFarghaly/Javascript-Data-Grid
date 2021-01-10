@@ -3,7 +3,7 @@
   A JavaScript data grid designed specifically for data manipulation in database applications such as master details forms.
 
 ----
-## Dependency
+### Dependency
 #### No dependencies
 ------
 
