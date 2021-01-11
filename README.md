@@ -134,11 +134,7 @@ How about formating data? just define locale and locale options!
                 width: '7em',
                 step: 0.10,
                 locale: 'en-GB',
-                options: {
-                currency: 'GBP',
-                style: 'currency',
-                minimumFractionDigits: 2
-               }
+                options: { style: 'currency', currency: 'GBP', minimumFractionDigits: 2 }
             }
 
 ```
