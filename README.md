@@ -54,4 +54,20 @@
                 width: '7em'
             }
         ];
+
+
+let data = [];
 ```
+
+
+Create dataGrid instance
+
+```javascript
+        let myGrid = new selim.DataGrid(columns, data);
+        myGrid.mount( document.body);
+```
+
+
+![alt text](https://github.com/YaserFarghaly/Javascript-Data-Grid/blob/main/other/grid-1.png "Logo Title Text 1")
+
+
