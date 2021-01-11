@@ -66,8 +66,11 @@ Create dataGrid instance
         let myGrid = new selim.DataGrid(columns, data);
         myGrid.mount( document.body);
 ```
+Click on the grid to activate it.
 
+![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/blob/main/other/grid-1.png "DataGrid attached to document body")
 
-![alt text](https://github.com/YaserFarghaly/Javascript-Data-Grid/blob/main/other/grid-1.png "Logo Title Text 1")
+Now press shift key and key i to insert new record.
 
+![alt text](https://github.com/YaserFarghaly/Javascript-Data-Grid/blob/main/other/grid-2.png "Logo Title Text 1")
 
