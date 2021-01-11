@@ -123,6 +123,25 @@ But the total was not calculated when we populated the grid? we can add post-ins
 ```
 
 
+How about formating data? just define locale and locale options!
+
+```javascript
+
+             {
+                name: 'price',
+                label: 'Unit Price',
+                type: 'number',
+                width: '7em',
+                step: 0.10,
+                locale: 'en-GB',
+                options: {
+                currency: 'GBP',
+                style: 'currency',
+                minimumFractionDigits: 2
+               }
+            }
+
+```
 
 
 
