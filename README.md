@@ -5,7 +5,7 @@
 ----
 ### Dependency
 #### No dependencies
-
+<br>
 ## Installation
 
 ```html
