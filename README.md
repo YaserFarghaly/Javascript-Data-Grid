@@ -74,6 +74,7 @@ Now press shift key + i to insert new record.
 
 ![alt text](https://github.com/YaserFarghaly/Javascript-Data-Grid/blob/main/other/grid-2.png "Logo Title Text 1")
 
+**dbleclick to edit or hit enter on activated cell**
 
 Create call back to calculate Total
 
