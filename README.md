@@ -102,6 +102,8 @@ Let's pass a row to the grid constructor
  *Note that we did not provide value for total column because we defined it as a computed column*
  
  
+ 
+ 
 ![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/blob/main/other/grid-3.png "DataGrid attached to document body")
 
 Now if we change the price or quantity total will be calculated according to the post-edit event.
