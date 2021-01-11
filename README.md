@@ -61,7 +61,7 @@ let data = [];
 ```
 
 
-Create dataGrid instance
+2- Create dataGrid instance
 
 ```javascript
         let myGrid = new selim.DataGrid(columns, data);
