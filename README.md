@@ -156,5 +156,5 @@ To remove grouping product code, just add  locale options
 
 ```
 
-![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/blob/main/other/grid-3.png "DataGrid attached to document body")
+![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/blob/main/other/grid-4.png "DataGrid attached to document body")
 
