@@ -88,4 +88,17 @@ Create call back to calculate Total
         };
         
 ```
-That method will be called every whenever a dataRow is changed.
+Let's pass a row to the grid constructor
+
+```javascript
+
+ let data = [
+ [1002, 'My favourite black tea', 23, 45.5, 3]
+ ];
+ 
+ ```
+ 
+ 
+![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/blob/main/other/grid-3.png "DataGrid attached to document body")
+
+
