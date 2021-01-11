@@ -5,7 +5,6 @@
 ----
 ### Dependency
 #### No dependencies
-------
 
 ## Installation
 
