@@ -92,13 +92,28 @@ Create call back to calculate Total
         };
         
 ```
-Let's pass a row to the grid constructor
+Let's pass a row to the grid constructor,
+
+We can provide ordered array that matchs columns metadata
 
 ```javascript
 
  let data = [
  [1002, 'My favourite black tea', 23, 45.5]
  ];
+ 
+ ```
+ 
+ Or
+ Provide each row as object
+ 
+ ```javascript
+  let data = [{
+            product_id: 1002,
+            product_name: 'My favourite black tea',
+            price: 23,
+            quantity: 45.5
+        },....];
  
  ```
  
