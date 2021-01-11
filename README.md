@@ -142,16 +142,16 @@ How about formating data? just define locale and locale options!       [for more
 
 To remove grouping product code, just add  locale options
 
-           {
+     
+
+```javascript
+          {
                 name: 'product_id',     
                 label: 'Product Code',  
-                type: 'number',  // Data type is required int float integer all are type number
+                type: 'number',
                 width: '9em',
                 background: '#d3d3d345',
                 options: { useGrouping: false }
             }
-
-```javascript
-
 
 ```
