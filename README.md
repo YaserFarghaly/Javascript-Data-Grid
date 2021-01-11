@@ -94,10 +94,12 @@ Let's pass a row to the grid constructor
 ```javascript
 
  let data = [
- [1002, 'My favourite black tea', 23, 45.5, 3]
+ [1002, 'My favourite black tea', 23, 45.5]
  ];
  
  ```
+ 
+ *Note that we did not provide value for total column because we defined it as a computed column
  
  
 ![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/blob/main/other/grid-3.png "DataGrid attached to document body")
