@@ -78,9 +78,14 @@ Now press shift key + i to insert new record.
 Create call back to calculate Total
 
 ```javascript
+      /**
+      * @Override
+      **/
        myGrid.callBack['post-edit'] = (value, column, dataRow) => {
        
             dataRow.total = dataRow.price * dataRow.quantity;
             
         };
-       ```
+        
+```
+That method will be called every whenever a dataRow is changed.
