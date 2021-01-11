@@ -17,7 +17,7 @@
 
 ```
 
-## Usage
+## Quick start
 
 1- Define metadata and grid options
 
