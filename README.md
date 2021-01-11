@@ -123,7 +123,8 @@ But the total was not calculated when we populated the grid? we can add post-ins
 ```
 
 
-How about formating data? just define locale and locale options!
+How about formating data? just define locale and locale options!  [for more details on Intl Object ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl "Intl Object")
+
 
 ```javascript
 
