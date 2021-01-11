@@ -105,7 +105,7 @@ We can provide ordered array that matchs columns metadata
  ```
  
  Or
- Provide each row as object
+ provide each row as object so we don't worry about values order
  
  ```javascript
   let data = [{
