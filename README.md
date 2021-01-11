@@ -64,7 +64,7 @@ Create dataGrid instance
 
 ```javascript
         let myGrid = new selim.DataGrid(columns, data);
-        myGrid.mount( document.body);
+        myGrid.mount(document.body);
 ```
 Click on the grid to activate it.
 
@@ -110,7 +110,7 @@ But the total was not calculated when we populated the grid? we can add post-ins
       /**
       * @Override
       **/
-       myGrid.callBack['post-insert'] = (value, column, dataRow) => {
+       myGrid.callBack['post-insert'] = (dataRow) => {
        
             dataRow.total = dataRow.price * dataRow.quantity;
             
