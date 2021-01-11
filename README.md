@@ -26,13 +26,13 @@
                 label: 'Product Code',  
                 type: 'number',  // Data type is required int float integer all are type number
                 width: '9em',
-                background: '#d3d3d345',
+                background: '#d3d3d345'
             }, {
                 name: 'product_name',
                 label: 'Product Name',
                 type: 'text',
                 single_line: true,
-                width: '20em',
+                width: '20em'
             }, {
                 name: 'price',
                 label: 'Unit Price',
@@ -44,14 +44,14 @@
                 name: 'quantity',
                 label: 'Quantity',
                 type: 'number',
-                width: '7em',
+                width: '7em'
 
             }, {
                 label: 'Total',
                 name: 'total',
                 type: 'number',
                 computed: true,
-                width: '7em',
+                width: '7em'
             }
         ];
 ```
