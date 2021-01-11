@@ -77,6 +77,8 @@ Now press shift key + i to insert new record.
 
 *dbleclick to edit or hit enter on activated cell*
 
+## Computed columns
+----
 Create call back to calculate Total
 
 ```javascript
