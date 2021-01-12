@@ -10,7 +10,7 @@
 
 ![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/blob/main/other/demo-1.png "DataGrid attached to document body")
 
-'''javascript
+```javascript
  myGrid.getChanges(true,true,true);
  
  output:
