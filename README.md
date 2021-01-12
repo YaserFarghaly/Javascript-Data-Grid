@@ -15,14 +15,12 @@
 myGrid.getChanges(true,true,true);
  
 output:
- 
-  [{"dml":"update","product_id":902,"product_name":"Tubular Mortice latch (L)170mm","price":6.8,"quantity":3,"disc":0,"tax":true,"total":20.4}]
+ [{"dml":"update","product_id":902,"product_name":"Tubular Mortice latch (L)170mm","price":6.8,"quantity":3,"disc":0,"tax":true,"total":20.4}]
 
 myGrid.getChanges(false,false,true);
 
 output:
-
-[{"dml":"update","tax":true}]
+ [{"dml":"update","tax":true}]
 
 ```
 ## Installation
