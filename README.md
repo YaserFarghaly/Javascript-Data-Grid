@@ -10,7 +10,6 @@
 
 ![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/blob/main/other/demo.png "DataGrid attached to document body")
 
-
 ## Installation
 
 ```html
