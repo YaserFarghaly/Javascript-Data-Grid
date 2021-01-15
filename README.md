@@ -10,20 +10,14 @@
 
 ![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/blob/main/other/demo-1.png "DataGrid attached to document body")
 
-```javascript
 
-myGrid.getChanges(true,true,true);
- 
-output:
- [{"dml":"update","line_id":32,"product_id":3002,"product_name":"Tubular Mortice latch (L)170mm","price":6.8,"quantity":3,"disc":0,"tax":true,"total":20.4}]
+## Design
 
-myGrid.getChanges(false,false,true);
 
-output:
- [{"dml":"update","line_id":32,"tax":true}]
-
-```
 ## Installation
+![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/blob/main/other/design.png "DataGrid design")
+
+
 
 ```html
 
