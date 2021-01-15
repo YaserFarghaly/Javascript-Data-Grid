@@ -46,7 +46,7 @@ In this example we change font color based on column values
         // To override default viewer, define custome viewer in column metadate
         columns = [{
         name:'column-name',
-        type:'number,
+        type:'number',
         viewer: myViewer,
         ...
         ...
