@@ -15,7 +15,34 @@
 
 ![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/blob/main/other/design.png "DataGrid design")
 
+## Custom viewer example
+In this example we change font color based on column values
 
+```javascript
+        class myViewer extends selim.base.BaseColumnViewer {
+            constructor(column) {
+                super(column); 
+                
+                /** 
+                * @override 
+                */
+                this.display = () => {
+                    let result = selim.validators.ValidateNumber(this.value,column);
+                    if (result.valid === true && this.value !== null) {
+                        if (this.value < 0) {
+                            this.container.style.color = 'red';
+                        } else {
+                            this.container.style.color = 'inherit';
+                        }
+
+                        this.container.innerText = Intl.NumberFormat(this.locale, this.options).format(this.value);
+                    } else {
+                        this.container.innerText = this.value;
+                    }
+                };
+            }
+        }
+```
 ## Installation
 
 ```html
