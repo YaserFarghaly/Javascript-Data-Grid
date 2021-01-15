@@ -14,10 +14,10 @@
 ## Design
 
 
-## Installation
 ![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/blob/main/other/design.png "DataGrid design")
 
 
+## Installation
 
 ```html
 
