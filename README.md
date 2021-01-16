@@ -52,6 +52,7 @@ Simple example to deisplay negative values in red color
         }];
 ```
 
-![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/wiki "Documentation link")
+
+[DataGrid Documentation](https://github.com/YaserFarghaly/Javascript-Data-Grid/wiki "Documentation link")
 
 
