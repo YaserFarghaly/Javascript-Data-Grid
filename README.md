@@ -28,15 +28,17 @@ In this example we change font color based on column values
                 */
                 this.display = () => {
                     let result = selim.validators.ValidateNumber(this.value,column);
+                    // depending on column metadate a null value can be valid value if the column is not required
                     if (result.valid === true && this.value !== null) {
-                        if (this.value < 0) {
-                            this.container.style.color = 'red';
-                        } else {
-                            this.container.style.color = 'inherit';
+                       
+                            this.container.style.color = this.value < 0 ? 'red':'inherit';
+                       
                         }
 
                         this.container.innerText = Intl.NumberFormat(this.locale, this.options).format(this.value);
+                        
                     } else {
+                        // invalid values will be displayed and highlighted
                         this.container.innerText = this.value;
                     }
                 };
