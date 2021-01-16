@@ -563,7 +563,7 @@ selim.data.optionsList = [
 
            let dispatch = function(event) {
                subs.forEach(sub => {
-                   if (Object.is(event.target, sub.target) && event.type === sub.type)
+                   if (Object.is(event.target, sub.target) && (event.type === sub.type))
                        sub.execute(event);
                });
            };
@@ -590,7 +590,7 @@ selim.data.optionsList = [
    }; selim.validators.validate = (value, column) => {
 
 
-     if (column.required === true && value === null) {
+     if ((column.required === true) && (value === null)) {
 
          return { valid: false, msg: 'Value required' };
      }
@@ -616,7 +616,7 @@ selim.data.optionsList = [
 
  selim.validators.IsValidDataType = (value, column) => {
 
-     if (value === null && column.required !== true) {
+     if ((value === null) && (column.required !== true)) {
          return true;
      }
 
@@ -643,16 +643,16 @@ selim.data.optionsList = [
      let result = { valid: false, msg: '' };
 
 
-     if (typeof value !== 'string' && value !== null) {
+     if ((typeof value !== 'string') && (value !== null)) {
          result.msg = 'Value is not string';
          return result;
      }
-     if (column.max && value.length > column.max) {
+     if ((column.max !== undefined) && (value.length > column.max)) {
          result.msg = 'Maximum length is ' + column.max;
          return result;
      }
 
-     if (column.min && value.length < column.min) {
+     if ((column.min !== undefined) && (value.length < column.min)) {
          result.msg = 'Minimum length is ' + column.min;
          return result;
      }
@@ -675,12 +675,12 @@ selim.data.optionsList = [
  selim.validators.validateBoolean = (value, column) => {
      let result = { valid: false, msg: '' };
 
-     if (column.required === true && value === null) {
+     if ((column.required === true) && (value === null)) {
          result.msg = 'Value required';
          return result;
      }
 
-     if (value !== true && value !== false) {
+     if ((value !== true) && (value !== false)) {
          result.msg = 'Value is not boolean';
          return result;
      }
@@ -693,7 +693,7 @@ selim.data.optionsList = [
 
      let result = { valid: false, msg: '' };
 
-     if (column.required === true && value === null) {
+     if ((column.required === true) && (value === null)) {
          result.msg = 'Value required';
          return result;
      }
@@ -708,14 +708,15 @@ selim.data.optionsList = [
          result.msg = 'Value is not a number ';
          return result;
      }
-     if (column.max && value !== null && value > column.max) {
+     if ((column.max !== undefined) && (value !== null) && (value > column.max)) {
          result.msg = 'Maximum value is ' + column.max;
          return result;
      }
-     if (column.min && value !== null && value < column.min) {
+     if ((column.min !== undefined) && (value !== null) && (value < column.min)) {
          result.msg = 'Minimum value is ' + column.min;
          return result;
      }
+
 
      if (column.in)
          if (Array.isArray(column.in)) {
@@ -738,7 +739,7 @@ selim.data.optionsList = [
 
      let result = { valid: false, msg: '' };
 
-     if (column.required === true && value === null) {
+     if ((column.required === true) && (value === null)) {
          result.msg = 'Value required';
 
          return result;
@@ -1235,7 +1236,7 @@ selim.DataModel = class DataModel {
           */
          this.display = () => {
 
-             let result = selim.validators.ValidateNumber(this.value, false, false, false);
+             let result = selim.validators.ValidateNumber(this.value, column);
              if (result.valid === true && this.value !== null) {
                  this.container.innerText = Intl.NumberFormat(this.locale, this.options).format(this.value);
              } else {
@@ -1826,7 +1827,7 @@ selim.GridCell = class GridCell {
                 if (result === null) {
                     throw 'Error validation class';
                 }
-                if (result.valid === true && selim.validators.IsValidDataType(this.value, column) !== true) {
+                if ((result.valid === true) && (selim.validators.IsValidDataType(this.value, column) !== true)) {
 
                     result.valid = false;
                     result.msg = 'Invalid data type expected ' + column.type;
@@ -2165,7 +2166,6 @@ selim.DataGrid = class DataGrid extends selim.base.BaseDataTable {
          */
         _container.addEventListener("keydown", event => {
             _key = selim.utils.getKeyCode(event);
-            console.log(_key)
             if (this.state.editing === true) {
                 return;
             }
