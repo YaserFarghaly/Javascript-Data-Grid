@@ -16,7 +16,7 @@
 ![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/blob/main/other/design.png "DataGrid design")
 
 ## Custom viewer example
-Simple example to deisplay negative values in red color
+Simple example to display negative values in red color
 
 ```javascript
         class myViewer extends selim.base.BaseColumnViewer {
