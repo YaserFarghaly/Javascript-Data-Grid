@@ -8,7 +8,7 @@
 
 ***
 
-![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/blob/main/other/demo-1.png "DataGrid attached to document body")
+![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/wiki/other/demo-1.png "DataGrid attached to document body")
 
 
 ## 
