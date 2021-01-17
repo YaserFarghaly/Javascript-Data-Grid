@@ -53,12 +53,7 @@ Object.defineProperty(selim, "data", {
     writable: true
 });
 
-
-selim.data.optionsList = [
-    { text: 'Product 2', value: 'Product2' },
-    { text: 'Product 3', value: 'Product3' },
-    { text: 'Product 4', value: 'Product4' }
-]; selim.utils.getClass = (cname, context) => {
+ selim.utils.getClass = (cname, context) => {
      let namespaces = cname.split(".");
      let name = namespaces.pop();
      namespaces.forEach(element => {
