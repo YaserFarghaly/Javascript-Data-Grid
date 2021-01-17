@@ -13,7 +13,7 @@
 
 ## 
 
-![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/blob/main/other/design.png "DataGrid design")
+![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/wiki/other/design.png "DataGrid design")
 
 ## Custom viewer example
 Simple example to display negative values in red color
