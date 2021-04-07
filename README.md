@@ -28,7 +28,7 @@ Simple example to display negative values in red color
                 */
                 this.display = () => {
                     let result = selim.validators.ValidateNumber(this.value,column);
-                    // depending on column metadate a null value can be valid value if the column is not required
+                    // depending on column metadata a null value can be valid value if the column is not required
                     if (result.valid === true && this.value !== null) {
                        
                          this.container.style.color = this.value < 0 ? 'red':'inherit';
