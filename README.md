@@ -19,7 +19,7 @@ I did not test it on MS Internet explorer or Edge as I’m not a fan of Microsof
 ![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/wiki/other/design.png "DataGrid design")
 
 ## Custom viewer example
-The purpose of column viewers is to provide full flexibility of how grid values will be displayed it can be simple text, image or complex HTML code. The default viewers display values as plain text with formatting options defined in column metadata. The following example gives an idea of how easy to write a column viewer without learning the grid code.
+The purpose of column viewers is to provide full flexibility of how grid values will be displayed it can be represented as a simple text, image or complex HTML code. The default viewers display values as plain text with formatting options defined in column metadata. The following example gives an idea of how easy to write a column viewer without learning any code just extend BaseColumnViewer class and override display() method, reference the container which is a div element and append whatever you want.
 
 Ex. Simple example to display negative values in red color
 
