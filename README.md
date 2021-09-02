@@ -16,7 +16,9 @@
 ![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/wiki/other/design.png "DataGrid design")
 
 ## Custom viewer example
-Simple example to display negative values in red color
+The purpose of column viewers is to provide full flexibility of how grid values will be displayed it can be simple text, image or complex HTML code. The default viewers display values as plain text with formatting options defined in column metadata. The following example gives an idea of how easy to write a column viewer without learning the grid code.
+
+Ex. Simple example to display negative values in red color
 
 ```javascript
         class myViewer extends selim.base.BaseColumnViewer {
