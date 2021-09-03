@@ -19,7 +19,18 @@ Events provide high level of flexibility for example you can allow conditional d
  - Pre-events
  
  - Post-events
+ - 
+```javascript
  
+     /**
+      * @Override
+      **/
+       myGrid.callBack['post-insert'] = (dataRow) => {
+       
+            dataRow.total = dataRow.price * dataRow.quantity;
+            
+        };
+ ```
 ----
 ### CSS
 You can amend styles or if you are using Bootstrap you can pass classlist to the grid to be compatible with your page style.
