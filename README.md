@@ -27,7 +27,7 @@ You can amend styles or if you are using Bootstrap you can pass classlist to the
 ----
 
 ### &#x1F534; WARNING: Javascript Math
-Be carfull as javascript has some serious issues, so I recomend using library such as decimal.js for proper calculation of computed colums
+Be carfull as javascript has some serious issues, so I recomend using library such as decimal.js for proper calculation of computed columns
 
 ------
 
