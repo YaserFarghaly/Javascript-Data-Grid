@@ -38,7 +38,7 @@ Events provide high level of flexibility for example you can allow conditional d
  ```
 ----
 ### CSS
-You can amend styles or if you are using Bootstrap you can pass classlist to the grid to be compatible with your page style.
+You can amend styles or if you are using Bootstrap you can pass classlist to the grid to apply Bootstrap styles.
 
 ----
 
