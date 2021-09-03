@@ -44,7 +44,7 @@ Just contact me to improve or refactoring the grid and documentation.
 ![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/wiki/other/design.png "DataGrid design")
 
 ## Custom viewer example
-The purpose of column viewers is to provide full flexibility of how grid values will be displayed it can be represented as a simple text, image or complex HTML code. The default viewers display values as plain text with formatting options defined in column metadata. The following example gives an idea of how easy to write a column viewer without learning any code just extend BaseColumnViewer class and override display() method, reference the container which is a div element and append whatever you want to represent the values of columns or individual cell.
+The purpose of column viewers is to provide full flexibility of how grid values are displayed it can be represented as a simple text, image or complex HTML code. The default viewers display values as plain text with formatting options defined in column metadata. The following example gives an idea of how easy to write a column viewer without learning any code just extend BaseColumnViewer class and override display() method, reference the container which is a div element and append whatever you want to represent the values of columns or individual cell.
 
 Ex. Simple example to display negative values in red color
 
