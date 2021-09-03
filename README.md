@@ -19,7 +19,7 @@ Events provide high level of flexibility for example you can allow conditional d
  - Pre-events
  
  - Post-events
- - 
+ 
 ```javascript
  
      /**
@@ -27,7 +27,8 @@ Events provide high level of flexibility for example you can allow conditional d
       **/
        myGrid.callBack['post-insert'] = (dataRow) => {
        
-            dataRow.total = dataRow.price * dataRow.quantity;
+          // Your code, ex. computed columns
+          dataRow.total = dataRow.price * dataRow.quantity;
             
         };
  ```
