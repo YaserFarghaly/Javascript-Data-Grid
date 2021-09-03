@@ -16,9 +16,9 @@ I did not test it on MS Internet explorer or Edge as I’m not a fan of Microsof
 ### Events
 Events provide high level of flexibility for example you can allow conditional deleting,inserting or editing of a single cell or running ajax requests to populate lists based on user input. Available events
  
- Pre-events
+ - Pre-events
  
- Post-events
+ - Post-events
  
 ----
 ### CSS
