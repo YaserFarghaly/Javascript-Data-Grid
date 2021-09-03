@@ -30,7 +30,7 @@ Be carfull as javascript has some serious issues, so I recomend using library su
 ------
 
 ### Contribution
-Just contact me to improve or refactoring the grid.
+Just contact me to improve or refactoring the grid and documentation.
 
 ----
 
