@@ -18,11 +18,11 @@ Events provide high level of flexibility for example you can allow conditional d
  
  - Pre-events
  
-  Must return boolean value return false to deny operation, you can conditionally deny editing,inserting or deleting data row, returning true allows the user to  complete current operation.
+  Pre-events must return boolean value return false to deny operation, you can conditionally deny editing,inserting or deleting data row, returning true allows the user to  complete current operation.
  
  - Post-events
  
-  These event can be used to calculate computed columns or look up data, for example we can look up product name from the database and display it.
+  Post-events can be used to calculate computed columns or look up data, for example we can look up product name from the database and display it.
  
 ```javascript
  
