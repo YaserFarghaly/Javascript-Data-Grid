@@ -22,7 +22,7 @@ Events provide high level of flexibility for example you can allow conditional d
  
  - Post-events
  
-  Post-events can be used to calculate computed columns or look up data, for example we can look up product name from the database and display it.
+  Post-events can be used to calculate computed columns or look up data, for example we can look up product name from the database using product code from dataRow object and display it.
  
 ```javascript
  
