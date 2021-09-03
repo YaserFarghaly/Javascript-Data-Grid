@@ -22,6 +22,11 @@ You can amend styles or if you are using Bootstrap you can pass classlist to the
 
 ----
 
+### Contribution
+Just contact me to improve or refactoring the grid.
+
+----
+
 ![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/wiki/other/demo-1.png "DataGrid attached to document body")
 
 
