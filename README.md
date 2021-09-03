@@ -13,6 +13,7 @@ I did not test it on MS Internet explorer or Edge as I’m not a fan of Microsof
 Events provide high level of flexibility for example you can allow conditional deleting,inserting or editing of a single cell or running ajax requests to populate lists based on user input.
  -Pre-events
  -Post-events
+ 
 ----
 
 ![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/wiki/other/demo-1.png "DataGrid attached to document body")
