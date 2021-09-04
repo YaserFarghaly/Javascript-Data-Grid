@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Get Started</title>
+    <link rel="stylesheet" href="../css/selim.data-grid-1.0.0.css">
+    <script src="../src/js/selim.data-grid-1.0.1.js"></script>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <script>
+        let columns = [{
+            name: 'product_id',
+            label: 'Product Code',
+            type: 'number', // Data type is required int float integer all are type number
+            width: '9em',
+            background: '#d3d3d345'
+        }, {
+            name: 'product_name',
+            label: 'Product Name',
+            type: 'text',
+            single_line: true,
+            width: '20em'
+        }, {
+            name: 'price',
+            label: 'Unit Price',
+            type: 'number',
+            width: '7em',
+            step: 0.10
+
+        }, {
+            name: 'quantity',
+            label: 'Quantity',
+            type: 'number',
+            width: '7em'
+
+        }, {
+            label: 'Total',
+            name: 'total',
+            type: 'number',
+            computed: true,
+            width: '7em'
+        }];
+
+
+        let data = [];
+        let myGrid = new selim.DataGrid(columns, data);
+        myGrid.mount(document.body);
+    </script>
+</body>
+
+</html>
