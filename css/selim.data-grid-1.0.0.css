@@ -21,6 +21,14 @@
     padding: .3em;
 }
 
+.gridContainer:focus {
+    outline: black;
+    outline-width: 2px;
+    outline-style: solid;
+    outline-color: black;
+    outline-offset: 0px;
+}
+
 .selectedRow {
     background-color: #b6cce6!important;
 }
@@ -32,7 +40,6 @@ table tr:hover {
 .editor {
     position: relative;
     display: flex;
-    position: absolute;
     top: 0px;
     left: 0px;
     width: -webkit-fill-available;
@@ -49,6 +56,8 @@ table tr:hover {
     position: absolute;
     resize: both;
     width: 100%;
+    top: -.4em;
+    left: -.2em;
 }
 
 html body {
