@@ -48,6 +48,8 @@ table tr:hover {
     position: absolute;
     resize: both;
     width: 100%;
+    top: -.4em;
+    left: -.2em;
 }
 
 html body {
