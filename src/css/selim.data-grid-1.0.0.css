@@ -21,6 +21,14 @@
     padding: .3em;
 }
 
+.gridContainer:focus {
+    outline: black;
+    outline-width: 2px;
+    outline-style: solid;
+    outline-color: black;
+    outline-offset: 0px;
+}
+
 .selectedRow {
     background-color: #b6cce6!important;
 }
