@@ -81,9 +81,11 @@
 
         myGrid.mount(document.body);
     </script>
-
-    <h3 style="color: brown;"> To be continued soon
-    </h3>
+    <br>
+    <button onclick="alert(JSON.stringify(myGrid.getChanges()))">Get Changes</button>
+    <br><br>
+    <div>getChanges method return an array of object(s) containing all changes, the dml property can be insert, update or delete to indicate what operation to do with each changed row</div>
+    <h3 style="color: rgb(25, 201, 19);"> To be continued soon</h3>
 </body>
 
 </html>
