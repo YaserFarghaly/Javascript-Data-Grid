@@ -69,6 +69,16 @@
 
         let data = [];
         let myGrid = new selim.DataGrid(columns, data);
+
+        /**
+         * @Override
+         **/
+        myGrid.callBack['post-edit'] = (value, column, dataRow) => {
+
+            dataRow.total = dataRow.price * dataRow.quantity;
+
+        };
+
         myGrid.mount(document.body);
     </script>
 
