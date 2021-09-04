@@ -79,11 +79,13 @@
          **/
         myGrid.callBack['post-edit'] = (value, column, dataRow) => {
 
+            // This calculation code is for demostration only
             dataRow.total = dataRow.price * dataRow.quantity;
 
         };
 
         myGrid.mount(document.body);
+        console.log(0.3 * 6);
     </script>
 
     <br>

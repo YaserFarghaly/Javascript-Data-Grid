@@ -22,7 +22,6 @@
 }
 
 .gridContainer:focus {
-    outline: black;
     outline-width: 2px;
     outline-style: solid;
     outline-color: black;
