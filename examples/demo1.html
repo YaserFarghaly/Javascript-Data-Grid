@@ -17,14 +17,26 @@
     <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+    <ol>
+        <li>Click on the grid to activate it</li>
+        <li> Press shift + i to insert new record</li>
+        <li> Use left and right arrow key to navigate row cells </li>
+        <li> Double click or press Enter on active cell to edit</li>
+        <li> Press Del or shift + d to delete selected row</li>
+
+    </ol>
+    <div> Product code and quantity are highlighted because they are defined as required fields, total is read only as it's defined as computed column</div>
+    <br>
 
     <script>
         let columns = [{
             name: 'product_id',
             label: 'Product Code',
-            type: 'number', // Data type is required int float integer all are type number
+            type: 'text',
+            single_line: true,
             width: '9em',
-            background: '#d3d3d345'
+            background: '#d3d3d345',
+            required: true
         }, {
             name: 'product_name',
             label: 'Product Name',
@@ -42,14 +54,16 @@
             name: 'quantity',
             label: 'Quantity',
             type: 'number',
-            width: '7em'
+            width: '7em',
+            required: true
 
         }, {
             label: 'Total',
             name: 'total',
             type: 'number',
             computed: true,
-            width: '7em'
+            width: '7em',
+            read_only: true
         }];
 
 
@@ -57,6 +71,9 @@
         let myGrid = new selim.DataGrid(columns, data);
         myGrid.mount(document.body);
     </script>
+
+    <h3 style="color: brown;"> To be continued soon
+    </h3>
 </body>
 
 </html>
