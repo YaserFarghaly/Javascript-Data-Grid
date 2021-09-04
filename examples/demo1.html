@@ -27,7 +27,11 @@
     </ol>
     <div> Product code and quantity are highlighted because they are defined as required fields, total is read only as it's defined as computed column</div>
     <br>
-
+    <div style="color: red;">Please note that javascript math has some serious issues, so write proper calculation code or use library such as decimal.js for proper calculations.
+        <br> total column may display value that is diffrent from what is actually stored in the data model. <br> To demonstrate this issue set the unit price to 0.3 and quantity 6 the Total will be 1.8 click showchanges you will see that actual value
+        in the data model is not 1.8
+    </div>
+    <br>
     <script>
         let columns = [{
             name: 'product_id',
@@ -81,9 +85,12 @@
 
         myGrid.mount(document.body);
     </script>
+
     <br>
     <button onclick="alert(JSON.stringify(myGrid.getChanges()))">Get Changes</button>
-    <br><br>
+
+    <br>
+    <br>
     <div>getChanges method return an array of object(s) containing all changes, the dml property can be insert, update or delete to indicate what operation to do with each changed row</div>
     <h3 style="color: rgb(25, 201, 19);"> To be continued soon</h3>
 </body>
