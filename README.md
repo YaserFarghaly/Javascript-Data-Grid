@@ -13,7 +13,7 @@ None
 - Written specifically for database applications master-details.
 - Code reusability, it help you to write cleaner code and organize you application.
 - Separate Viewing, Editing and Validation components.
-- Highly flexible you  can easily and quickly write your own column viewers , column Editors and column Validators and reuse your code in multiple parts of your applications.
+- Highly flexible you  can easily and quickly write your own column viewers , column editors and column validators and reuse your code in multiple parts of your applications.
 - Internationalization, built-in support to localize your applications.
 
 ---
