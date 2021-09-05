@@ -9,7 +9,7 @@ None
 
 ----
 
-## Tested on
+### Tested on
 
 ![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/wiki/other/edge.png "Edge")
 ![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/wiki/other/chrome.png "Chrome")
