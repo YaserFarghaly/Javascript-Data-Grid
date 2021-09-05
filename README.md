@@ -14,6 +14,8 @@ None
 ![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/wiki/other/edge.png "Edge")
 ![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/wiki/other/chrome.png "Chrome")
 ![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/wiki/other/firefox.png "Firefox")
+![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/wiki/other/opera.png "Opera")
+
 
 ---
 
