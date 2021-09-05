@@ -11,12 +11,10 @@ None
 
 ## Tested on
 
-<img src="https://github.com/YaserFarghaly/Javascript-Data-Grid/wiki/other/edge.png" alt="Edge" width="64" height="64"/>
-<img src="https://github.com/YaserFarghaly/Javascript-Data-Grid/wiki/other/chrome.png" alt="Chrome" width="64" height="64"/>
-<img src="https://github.com/YaserFarghaly/Javascript-Data-Grid/wiki/other/firefox.png" alt="Fiefox" width="64" height="64"/>
-<img src="https://github.com/YaserFarghaly/Javascript-Data-Grid/wiki/other/opera.png" alt="Opera" width="64" height="64"/>
-
-
+![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/wiki/other/edge.png "Edge")
+![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/wiki/other/chrome.png "Chrome")
+![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/wiki/other/firefox.png "Firefox")
+![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/wiki/other/opera.png "Opera")
 
 ---
 
