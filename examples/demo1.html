@@ -11,9 +11,35 @@
     <title>Get Started</title>
     <link rel="stylesheet" href="../css/selim.data-grid-1.0.0.css">
     <script src="../src/js/selim.data-grid-1.0.1.js"></script>
+    <script src="metadata.js"></script>
+
+    <script>
+        function mountGrid() {
+            //  columns metadata defined in metadata.js
+            let data = [];
+            let myGrid = new selim.DataGrid(columns, data);
+
+            /**
+             * @Override
+             **/
+            myGrid.callBack['post-edit'] = (value, column, dataRow) => {
+
+                // This calculation code is for demostration only
+                dataRow.total = dataRow.price * dataRow.quantity;
+
+            };
+
+            myGrid.mount(selim.$g('grid-div'));
+
+            selim.$g('myButton').addEventListener('click', () => {
+                alert(JSON.stringify(myGrid.getChanges()));
+            });
+
+        }
+    </script>
 </head>
 
-<body>
+<body onload="mountGrid()">
     <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -23,8 +49,8 @@
         <li> Use left and right arrow key to navigate row cells </li>
         <li> Double click or press Enter on active cell to edit</li>
         <li> Press Del or shift + d to delete selected row</li>
-
     </ol>
+
     <div> Product code and quantity are highlighted because they are defined as required fields, total is read only as it's defined as computed column</div>
     <br>
     <div style="color: red;">Please note that javascript math has some serious issues, so write proper calculation code or use library such as decimal.js for proper calculations.
@@ -32,64 +58,11 @@
         in the data model is not 1.8
     </div>
     <br>
-    <script>
-        let columns = [{
-            name: 'product_id',
-            label: 'Product Code',
-            type: 'text',
-            single_line: true,
-            width: '9em',
-            background: '#d3d3d345',
-            required: true
-        }, {
-            name: 'product_name',
-            label: 'Product Name',
-            type: 'text',
-            single_line: true,
-            width: '20em'
-        }, {
-            name: 'price',
-            label: 'Unit Price',
-            type: 'number',
-            width: '7em',
-            step: 0.10
 
-        }, {
-            name: 'quantity',
-            label: 'Quantity',
-            type: 'number',
-            width: '7em',
-            required: true
-
-        }, {
-            label: 'Total',
-            name: 'total',
-            type: 'number',
-            computed: true,
-            width: '7em',
-            read_only: true
-        }];
-
-
-        let data = [];
-        let myGrid = new selim.DataGrid(columns, data);
-
-        /**
-         * @Override
-         **/
-        myGrid.callBack['post-edit'] = (value, column, dataRow) => {
-
-            // This calculation code is for demostration only
-            dataRow.total = dataRow.price * dataRow.quantity;
-
-        };
-
-        myGrid.mount(document.body);
-    </script>
+    <div id="grid-div"></div>
 
     <br>
-    <button onclick="alert(JSON.stringify(myGrid.getChanges()))">Get Changes</button>
-
+    <button id="myButton">Get Changes</button>
     <br>
     <br>
     <div>getChanges method return an array of object(s) containing all changes, the dml property can be insert, update or delete to indicate what operation to do with each changed row</div>
