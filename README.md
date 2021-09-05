@@ -9,6 +9,14 @@ None
 
 ----
 
+### Benefits
+- Written specifically for database applications master-details.
+- Code reusability, it help you to write cleaner code and organize you application.
+- Separate Viewing, Editing and Validation components.
+- Highly flexible you  can easily and quickly write your own column viewers , column Editors and column Validators and reuse your code in multiple parts of your applications
+
+---
+
 ### Events
 Events provide high level of flexibility for example you can allow conditional deleting,inserting or editing of a single cell or running ajax requests to populate lists based on user input. Available events
  
