@@ -62,6 +62,11 @@ Just contact me to improve or refactoring the grid and documentation.
 
 ## 
 
+![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/wiki/other/edge.png "Edge")
+![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/wiki/other/chrome.png "Chrome")
+
+
+
 ![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/wiki/other/design.png "DataGrid design")
 
 ## Custom viewer example
