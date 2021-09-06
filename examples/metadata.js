@@ -16,6 +16,7 @@ let columns = [{
     name: 'price',
     label: 'Unit Price',
     type: 'number',
+    options: { style: 'currency', currency: 'USD', minimumFractionDigits: 2 },
     width: '7em',
     step: 0.10
 
@@ -27,9 +28,17 @@ let columns = [{
     required: true
 
 }, {
+    name: 'taxable',
+    label: 'Taxable',
+    type: 'boolean',
+    width: '7em',
+    required: true
+
+}, {
     label: 'Total',
     name: 'total',
     type: 'number',
+    options: { style: 'currency', currency: 'USD', minimumFractionDigits: 2 },
     computed: true,
     width: '7em',
     read_only: true

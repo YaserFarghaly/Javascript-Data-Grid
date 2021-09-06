@@ -53,852 +53,855 @@ Object.defineProperty(selim, "data", {
     writable: true
 });
 
- selim.utils.getClass = (cname, context) => {
-     let namespaces = cname.split(".");
-     let name = namespaces.pop();
-     namespaces.forEach(element => {
-         context = context[element];
-     });
-
-     if ((!context || !context[name])) {
-         return undefined;
-     };
-
-     return context[name];
-
- };
-
- selim.utils.execute = (function_name, context, ...args) => {
-
-     let namespaces = function_name.split(".");
-     let name = namespaces.pop();
-     namespaces.forEach(element => {
-         context = context[element];
-
-     });
-
-     if ((!context || !context[name])) {
-         return undefined;
-     };
-     return context[name].apply(context, args);
- };
-
- selim.utils.isNumber = (value) => {
-
-     if (typeof value === 'string') {
-         return false;
-     }
-     if (value === '' || value === null || value === true || value === false || isNaN(value)) {
-         return false;
-     }
-     if (value.constructor && value.constructor.name === 'Date') {
-         return false;
-     }
+selim.utils.getClass = (cname, context) => {
+    let namespaces = cname.split(".");
+    let name = namespaces.pop();
+    namespaces.forEach(element => {
+        context = context[element];
+    });
+
+    if ((!context || !context[name])) {
+        return undefined;
+    };
+
+    return context[name];
+
+};
+
+selim.utils.execute = (function_name, context, ...args) => {
+
+    let namespaces = function_name.split(".");
+    let name = namespaces.pop();
+    namespaces.forEach(element => {
+        context = context[element];
+
+    });
+
+    if ((!context || !context[name])) {
+        return undefined;
+    };
+    return context[name].apply(context, args);
+};
+
+selim.utils.isNumber = (value) => {
+
+    if (typeof value === 'string') {
+        return false;
+    }
+    if (value === '' || value === null || value === true || value === false || isNaN(value)) {
+        return false;
+    }
+    if (value.constructor && value.constructor.name === 'Date') {
+        return false;
+    }
 
-     return true;
- };
+    return true;
+};
 
- selim.utils.removeChilds = (ele) => {
+selim.utils.removeChilds = (ele) => {
 
-     while (ele.childNodes.length > 0) {
-         ele.removeChild(ele.childNodes[0]);
-     }
+    while (ele.childNodes.length > 0) {
+        ele.removeChild(ele.childNodes[0]);
+    }
 
- };
+};
 
- selim.utils.isDate = (value) => {
+selim.utils.isDate = (value) => {
 
-     if (value instanceof Date) {
-         return true;
-     }
-     return false;
+    if (value instanceof Date) {
+        return true;
+    }
+    return false;
 
- };
-
+};
+
 
- Object.defineProperty(selim.utils, 'MONTHS', {
-     value: {
-         JAN: 1,
-         FEB: 2,
-         MAR: 3,
-         APR: 4,
-         MAY: 5,
-         JUN: 6,
-         JUL: 7,
-         AUG: 8,
-         SEP: 9,
-         OCT: 10,
-         NOV: 11,
-         DEC: 12
-     },
-     writable: false
- });
+Object.defineProperty(selim.utils, 'MONTHS', {
+    value: {
+        JAN: 1,
+        FEB: 2,
+        MAR: 3,
+        APR: 4,
+        MAY: 5,
+        JUN: 6,
+        JUL: 7,
+        AUG: 8,
+        SEP: 9,
+        OCT: 10,
+        NOV: 11,
+        DEC: 12
+    },
+    writable: false
+});
 
- selim.utils.MonthToNumber = (name) => {
-     if (name) {
-         name = name.trim().substr(0, 3).toUpperCase();
-         return MONTHS[name] ? MONTHS[name] : null;
-     }
-     return null;
- };
+selim.utils.MonthToNumber = (name) => {
+    if (name) {
+        name = name.trim().substr(0, 3).toUpperCase();
+        return MONTHS[name] ? MONTHS[name] : null;
+    }
+    return null;
+};
 
 
- selim.utils.GetControlKyes = (options, event) => {
+selim.utils.GetControlKyes = (options, event) => {
 
-     let key = null;
-     key = event.shiftKey ? 'shift+' + event.code : null;
-     key = key === null && event.altKey ? 'alt+' + event.code : key;
-     key = key === null && event.ctrlKey ? 'ctrl+' + event.code : key;
-     key = key === null ? event.code : key;
+    let key = null;
+    key = event.shiftKey ? 'shift+' + event.code : null;
+    key = key === null && event.altKey ? 'alt+' + event.code : key;
+    key = key === null && event.ctrlKey ? 'ctrl+' + event.code : key;
+    key = key === null ? event.code : key;
 
-     let found = false;
-     if (options.delete_key) {
-         found = options.delete_key.split('|').find(element => element === key);
-         if (found) return 'delete';
-     }
+    let found = false;
+    if (options.delete_key) {
+        found = options.delete_key.split('|').find(element => element === key);
+        if (found) return 'delete';
+    }
 
-     if (options.insert_key) {
-         found = options.insert_key.split('|').find(element => element === key);
-         if (found) return 'insert';
-     }
+    if (options.insert_key) {
+        found = options.insert_key.split('|').find(element => element === key);
+        if (found) return 'insert';
+    }
 
-     if (options.unselect_key) {
-         found = options.unselect_key.split('|').find(element => element === key);
-         if (found) return 'unselect';
-     }
+    if (options.unselect_key) {
+        found = options.unselect_key.split('|').find(element => element === key);
+        if (found) return 'unselect';
+    }
 
-     return null;
+    return null;
 
- };
-
-
- selim.utils.getDateString = (date) => {
-
-     let month = (date.getMonth() + 1);
-     month = month < 9 ? ('0' + month) : (month + '');
-     let day = date.getDate();
-     day = day < 9 ? ('0' + day) : day;
-     return date.getFullYear() + '-' + month + '-' + day;
- };
-
- selim.utils.formatDate = (date, locale, options) => {
-
-     if (date === null)
-         return null;
-
-     console.log(locale + ' ' + options);
-
-     return new Intl.DateTimeFormat(locale, options).format(date);
-
- };
-
- selim.utils.compairText = (a, b, locale, options) => {
-     return Intl.Collator(locale, options).compare(a, b);
- };
-
- selim.utils.compairNumber = (a, b) => {
-
-     if (a === null) return 1;
-     if (b === null) return -1;
-     if (a === null && b === null) return 0;
-     if (a > b)
-         return 1;
-     if (a < b)
-         return -1;
+};
+
+
+selim.utils.getDateString = (date) => {
+
+    let month = (date.getMonth() + 1);
+    month = month < 9 ? ('0' + month) : (month + '');
+    let day = date.getDate();
+    day = day < 9 ? ('0' + day) : day;
+    return date.getFullYear() + '-' + month + '-' + day;
+};
+
+selim.utils.formatDate = (date, locale, options) => {
+
+    if (date === null)
+        return null;
+
+    console.log(locale + ' ' + options);
+
+    return new Intl.DateTimeFormat(locale, options).format(date);
+
+};
+
+selim.utils.compairText = (a, b, locale, options) => {
+    return Intl.Collator(locale, options).compare(a, b);
+};
+
+selim.utils.compairNumber = (a, b) => {
+
+    if (a === null) return 1;
+    if (b === null) return -1;
+    if (a === null && b === null) return 0;
+    if (a > b)
+        return 1;
+    if (a < b)
+        return -1;
 
-     return 0;
- };
+    return 0;
+};
 
- selim.utils.compairBoolean = (a, b) => {
-     if (a > b)
-         return 1;
-     if (a < b)
-         return -1;
+selim.utils.compairBoolean = (a, b) => {
+    if (a > b)
+        return 1;
+    if (a < b)
+        return -1;
 
-     return 0;
- };
+    return 0;
+};
 
- selim.utils.ParseISO8601 = (dateString) => {
+selim.utils.ParseISO8601 = (dateString) => {
 
-     let date = new Date(dateString);
+    let date = new Date(dateString);
 
-     if (date == 'Invalid Date' || (date.constructor && date.constructor.name !== 'Date')) {
-         console.error('Invalid Date string: ' + dateString);
-         return null;
-     }
+    if (date == 'Invalid Date' || (date.constructor && date.constructor.name !== 'Date')) {
+        console.error('Invalid Date string: ' + dateString);
+        return null;
+    }
 
-     return date;
+    return date;
 
- };
+};
 
- selim.utils.ParseUnixDate = (integer) => {
+selim.utils.ParseUnixDate = (integer) => {
 
-     let len = 13 - ('' + integer).length;
-     integer = len > 0 ? integer * Math.pow(10, len) : integer;
-     str = integer < 0 ? integer * 10 : integer;
-     let date = new Date(str);
-     if (date == 'Invalid Date' || (date.constructor && date.constructor.name !== 'Date')) {
-         console.error('Invalid Date string: ' + integer);
-         return null;
-     }
-     return date;
- };
+    let len = 13 - ('' + integer).length;
+    integer = len > 0 ? integer * Math.pow(10, len) : integer;
+    str = integer < 0 ? integer * 10 : integer;
+    let date = new Date(str);
+    if (date == 'Invalid Date' || (date.constructor && date.constructor.name !== 'Date')) {
+        console.error('Invalid Date string: ' + integer);
+        return null;
+    }
+    return date;
+};
 
 
- selim.utils.getKeyCode = (event) => {
+selim.utils.getKeyCode = (event) => {
 
-     let key = event.code || event.key;
-     if (key.length === 1) {
-         return 'Key' + key.toUpperCase();
-     }
+    let key = event.code || event.key;
+    if (key.length === 1) {
+        return 'Key' + key.toUpperCase();
+    }
 
-     return key;
- };
- /**
-  * 
-  * @param {String} dateString  default format YYYY-MM-DD
-  */
- selim.utils.ParseDate = (dateString, separator, format) => {
-     dateString = separator === ' ' ? dateString.replace(/\s\s+/g, ' ') : dateString;
-     if (!format)
-         format = "YYYY-MM-DD";
-     if (!separator)
-         separator = '-';
-     let parts = dateString.split(separator);
-     let identifiers = format.split('-');
-     let day = parts[identifiers.indexOf('DD')];
-     let month = parts[identifiers.indexOf('MM')];
-     let year = parts[identifiers.indexOf('YYYY')];
-     let date = null;
-     month = (isNaN(month)) ? MonthToNumber(month) : month;
-     date = new Date(year, month - 1, day);
-     if (date == 'Invalid Date') {
-         console.error('Invalid date string ' + dateString);
-         return null;
-     }
+    return key;
+};
+/**
+ * 
+ * @param {String} dateString  default format YYYY-MM-DD
+ */
+selim.utils.ParseDate = (dateString, separator, format) => {
+    dateString = separator === ' ' ? dateString.replace(/\s\s+/g, ' ') : dateString;
+    if (!format)
+        format = "YYYY-MM-DD";
+    if (!separator)
+        separator = '-';
+    let parts = dateString.split(separator);
+    let identifiers = format.split('-');
+    let day = parts[identifiers.indexOf('DD')];
+    let month = parts[identifiers.indexOf('MM')];
+    let year = parts[identifiers.indexOf('YYYY')];
+    let date = null;
+    month = (isNaN(month)) ? MonthToNumber(month) : month;
+    date = new Date(year, month - 1, day);
+    if (date == 'Invalid Date') {
+        console.error('Invalid date string ' + dateString);
+        return null;
+    }
 
-     return date;
-
- };   Object.defineProperty(selim.base, 'BaseEditor', {
+    return date;
+
+};
+Object.defineProperty(selim.base, 'BaseEditor', {
 
-       value: class BaseEditor {
-           /**
-            *  This is the base class for column editors classes
-            *  DON'T WRITE CODE HERE
-            *  Create your own column editor by extending this class,
-            *  You must override init(cell, dataRow, callBack) method and call callBack() method
-            *  when users finish editing
-            */
-           constructor(column) {
+    value: class BaseEditor {
+        /**
+         *  This is the base class for column editors classes
+         *  DON'T WRITE CODE HERE
+         *  Create your own column editor by extending this class,
+         *  You must override init(cell, dataRow, callBack) method and call callBack() method
+         *  when users finish editing
+         */
+        constructor(column) {
 
-               this.dismissed = false;
+            this.dismissed = false;
 
-               Object.defineProperty(this, 'container', {
-                   value: selim.$c('div'),
-                   writable: false
+            Object.defineProperty(this, 'container', {
+                value: selim.$c('div'),
+                writable: false
 
-               });
+            });
 
-               this.container.className = "editor";
+            this.container.className = "editor";
 
-               this.classList = this.container.classList;
+            this.classList = this.container.classList;
 
-               if (column.v_align) {
-                   this.container.style.alignItems = column.v_align === 'center' ? column.v_align : 'flex-' + column.v_align;
-               }
+            if (column.v_align) {
+                this.container.style.alignItems = column.v_align === 'center' ? column.v_align : 'flex-' + column.v_align;
+            }
 
-               if (column.h_align) {
-                   this.container.style.justifyContent = column.h_align === 'center' ? column.h_align : 'flex-' + column.h_align;
-               }
+            if (column.h_align) {
+                this.container.style.justifyContent = column.h_align === 'center' ? column.h_align : 'flex-' + column.h_align;
+            }
 
 
-               let handelKeyDown = (event) => {
-                   if (event.code === 'Escape') {
-                       this.escaped();
+            let handelKeyDown = (event) => {
+                if (event.code === 'Escape') {
+                    this.escaped();
 
-                   }
-               };
+                }
+            };
 
-               let handleClick = (event) => {
-                   event.stopPropagation();
+            let handleClick = (event) => {
+                event.stopPropagation();
 
-               };
+            };
 
-               Object.defineProperty(this, 'dismiss', {
-                   value: (callBack) => {
-                       if (this.dismissed === true) return;
-                       this.dismissed = true;
-                       this.container.removeEventListener('keydown', handelKeyDown);
-                       this.container.removeEventListener('click', handleClick);
-                       callBack(this);
-                   },
-                   writable: false
-               });
+            Object.defineProperty(this, 'dismiss', {
+                value: (callBack) => {
+                    if (this.dismissed === true) return;
+                    this.dismissed = true;
+                    this.container.removeEventListener('keydown', handelKeyDown);
+                    this.container.removeEventListener('click', handleClick);
+                    callBack(this);
+                },
+                writable: false
+            });
 
 
-               this.container.addEventListener('keydown', handelKeyDown);
+            this.container.addEventListener('keydown', handelKeyDown);
 
 
-               /**
-                * 
-                * @param {selim.DataRow} dataRow 
-                * @param {function} callBack 
-                */
-               this.init = (dataRow, callBack) => {
+            /**
+             * 
+             * @param {selim.DataRow} dataRow 
+             * @param {function} callBack 
+             */
+            this.init = (dataRow, callBack) => {
 
-               };
+            };
 
-           }
-       },
-       writable: false
-   });
+        }
+    },
+    writable: false
+});
 
 
-   Object.defineProperty(selim.base, 'BaseColumnViewer', {
+Object.defineProperty(selim.base, 'BaseColumnViewer', {
 
-       value: class BaseColumnViewer {
+    value: class BaseColumnViewer {
 
-           /**
-            *  This class is the base class of any ColumnViewer class
-            *  DON'T CHANGE CODE HERE, BUT YOU CAN EXTEND & OVERRIDE
-            *  
-            */
-           constructor(column) {
+        /**
+         *  This class is the base class of any ColumnViewer class
+         *  DON'T CHANGE CODE HERE, BUT YOU CAN EXTEND & OVERRIDE
+         *  
+         */
+        constructor(column) {
 
-               let _container = selim.$c('div');
-               let _value = null;
-               let _display = _container.style.display;
-               this.classList = _container.classList;
-               this.locale = column.locale ? column.locale : navigator.language;
-               this.options = column.options ? column.options : {};
-               _container.className = 'viewer flex-fill';
-               _container.style.width = 'initial';
-               _container.style.wordBreak = 'break-all';
-               if (column.nowrap === true) {
-                   _container.style.whiteSpace = 'nowrap'
-                   _container.style.width = 'inherit';
-                   _container.style.height = 'inherit';
-                   _container.style.overflow = 'hidden';
-
-               }
-
-
-
-
-               Object.defineProperty(this, 'container', {
-                   get() {
-                       return _container
-                   },
-               });
-
-               Object.defineProperty(this, 'classList', {
-                   get() {
-                       return _container.classList;
-                   },
-               });
-
-               Object.defineProperty(this, 'style', {
-                   get() {
-                       return _container.style;
-                   },
-               });
-
-
-               Object.defineProperty(this, 'value', {
-                   get() {
-                       return _value;
-                   },
-                   set(value) {
-                       _value = value;
-                       this.display();
-                   }
-               });
-
-
-               this.display = () => {
-                   _container.innerText = _value;
-
-               };
-
-               /**
-                * 
-                * @param {boolean} value 
-                */
-               this.hide = value => {
-                   if (value === true) {
-                       _display = _container.style.display;
-                       _container.style.display = 'none';
-                   } else {
-                       _container.style.display = _display;
+            let _container = selim.$c('div');
+            let _value = null;
+            let _display = _container.style.display;
+            this.classList = _container.classList;
+            this.locale = column.locale ? column.locale : navigator.language;
+            this.options = column.options ? column.options : {};
+            _container.className = 'viewer flex-fill';
+            _container.style.width = 'initial';
+            _container.style.wordBreak = 'break-all';
+            if (column.nowrap === true) {
+                _container.style.whiteSpace = 'nowrap'
+                _container.style.width = 'inherit';
+                _container.style.height = 'inherit';
+                _container.style.overflow = 'hidden';
+
+            }
+
+
+
+
+            Object.defineProperty(this, 'container', {
+                get() {
+                    return _container
+                },
+            });
+
+            Object.defineProperty(this, 'classList', {
+                get() {
+                    return _container.classList;
+                },
+            });
+
+            Object.defineProperty(this, 'style', {
+                get() {
+                    return _container.style;
+                },
+            });
+
+
+            Object.defineProperty(this, 'value', {
+                get() {
+                    return _value;
+                },
+                set(value) {
+                    _value = value;
+                    this.display();
+                }
+            });
+
+
+            this.display = () => {
+                _container.innerText = _value;
+
+            };
+
+            /**
+             * 
+             * @param {boolean} value 
+             */
+            this.hide = value => {
+                if (value === true) {
+                    _display = _container.style.display;
+                    _container.style.display = 'none';
+                } else {
+                    _container.style.display = _display;
 
-                   }
+                }
 
-               };
+            };
 
-               /**
-                * 
-                * @param {HTMLElement} ele 
-                */
-               this.mount = ele => {
-                   ele.appendChild(this.container);
-               }
-
-           }
+            /**
+             * 
+             * @param {HTMLElement} ele 
+             */
+            this.mount = ele => {
+                ele.appendChild(this.container);
+            }
+
+        }
 
-       },
-       writable: false
-   });
+    },
+    writable: false
+});
 
-   Object.defineProperty(selim.base, 'BaseDataTable', {
+Object.defineProperty(selim.base, 'BaseDataTable', {
 
-       /**
-        *  this class is the base class of selim.DataGrid class
-        *  DON'T WRITE CODE HERE 
-        *  instead override its methods as shown below
-        */
+    /**
+     *  this class is the base class of selim.DataGrid class
+     *  DON'T WRITE CODE HERE 
+     *  instead override its methods as shown below
+     */
 
-       value: class BaseDataTable {
-           constructor() {
+    value: class BaseDataTable {
+        constructor() {
 
-               let self = this;
+            let self = this;
 
-               Object.defineProperty(this, 'callBack', {
-                   value: {},
-                   writable: false
-               });
+            Object.defineProperty(this, 'callBack', {
+                value: {},
+                writable: false
+            });
 
-               /**
-                * @param {Object} defaultRowValues
-                * @returns {boolean} false to prevent insert operation
-                */
-               this.callBack['pre-insert'] = defaultRowValues => {
-                   /**
-                    *  Don't write code here , instead overide this method.
-                    *  this method will be called whenever the user attempts to insert a new row,
-                    *  you can modify the default value for each column or to prevent the 
-                    *  user from inserting a new row by returrning false
-                    *  Ex.
-                    *      var dataTable = new selim.DataTable(columns,data);
-                    * 
-                    *                       
-                    *      override
-                    *    
-                    *      dataTable.callBack['pre-insert] = defaultRowValues => {
-                    *           
-                    *       // you code  here
-                    * 
-                    *       Ex.
-                    *          defaultRowValues.total = defaultRowValues.quantity * defaultRowValues.price;
-                    *     
-                    *          PS.  When performing calculations consider numeric precision issues of Java Script
-                    *          
-                    *          return true;  // returning false will prevent row insertion              
-                    *      }
-                    * 
-                    *  */
+            /**
+             * @param {Object} defaultRowValues
+             * @returns {boolean} false to prevent insert operation
+             */
+            this.callBack['pre-insert'] = defaultRowValues => {
+                /**
+                 *  Don't write code here , instead overide this method.
+                 *  this method will be called whenever the user attempts to insert a new row,
+                 *  you can modify the default value for each column or to prevent the 
+                 *  user from inserting a new row by returrning false
+                 *  Ex.
+                 *      var dataTable = new selim.DataTable(columns,data);
+                 * 
+                 *                       
+                 *      override
+                 *    
+                 *      dataTable.callBack['pre-insert] = defaultRowValues => {
+                 *           
+                 *       // you code  here
+                 * 
+                 *       Ex.
+                 *          defaultRowValues.total = defaultRowValues.quantity * defaultRowValues.price;
+                 *     
+                 *          PS.  When performing calculations consider numeric precision issues of Java Script
+                 *          
+                 *          return true;  // returning false will prevent row insertion              
+                 *      }
+                 * 
+                 *  */
 
-                   return true;
-               };
+                return true;
+            };
 
-               this.callBack['pre-edit'] = (column, dataRow) => {
-                   return true;
-               };
+            this.callBack['pre-edit'] = (column, dataRow) => {
+                return true;
+            };
 
-               this.callBack['post-edit'] = (value, column, dataRow) => {
+            this.callBack['post-edit'] = (value, column, dataRow) => {
 
-               };
+            };
 
-               this.onMethod = (src) => {};
+            this.onMethod = (src) => {};
+
+            let postInsert = () => {};
 
-               let postInsert = () => {};
+            /**
+             * @param {selim.DataRow} dataRow
+             */
 
-               /**
-                * @param {selim.DataRow} dataRow
-                */
+            Object.defineProperty(this.callBack, 'post-insert', {
 
-               Object.defineProperty(this.callBack, 'post-insert', {
+                get() { return postInsert },
 
-                   get() { return postInsert },
+                set(clbk) {
+                    postInsert = clbk;
+                    self.onMethod('post-insert');
 
-                   set(clbk) {
-                       postInsert = clbk;
-                       self.onMethod('post-insert');
+                }
+
+            });
+
+
+
+
+            /**
+             * @param {selim.DataRow} dataRow
+             * @returns {boolean} false to prevent delete operation
+             */
+            this.callBack['pre-delete'] = dataRow => {
+                /**
+                 * Don't write code here
+                 * */
 
-                   }
+                return true;
+            };
 
-               });
-
+        }
 
+    },
+    writable: false
+});
 
-
-               /**
-                * @param {selim.DataRow} dataRow
-                * @returns {boolean} false to prevent delete operation
-                */
-               this.callBack['pre-delete'] = dataRow => {
-                   /**
-                    * Don't write code here
-                    * */
 
-                   return true;
-               };
+selim.EventRegister = class {
 
-           }
+    constructor() {
+        let subs = [];
+        let types = [];
 
-       },
-       writable: false
-   });
+        let dispatch = function(event) {
+            subs.forEach(sub => {
+                if (Object.is(event.target, sub.target) && (event.type === sub.type))
+                    sub.execute(event);
+            });
+        };
+
+
+        let createListener = (type) => {
+            if (types.find(event_type => event_type === type) !== undefined) {
+                return;
+            }
+            document.addEventListener(type, dispatch);
+            types.push(type);
+        };
 
+        this.add = (target, event_type, fun) => {
+            createListener(event_type);
+            subs.push({
+                target: target,
+                type: event_type,
+                execute: fun
+            });
+        };
+
+    }
+};
+selim.validators.validate = (value, column) => {
+
+
+    if ((column.required === true) && (value === null)) {
 
-   selim.EventRegister = class {
+        return { valid: false, msg: 'Value required' };
+    }
 
-       constructor() {
-           let subs = [];
-           let types = [];
+    switch (column.type) {
+        case 'text':
+            return selim.validators.validateText(value, column);
 
-           let dispatch = function(event) {
-               subs.forEach(sub => {
-                   if (Object.is(event.target, sub.target) && (event.type === sub.type))
-                       sub.execute(event);
-               });
-           };
-
+        case 'number':
+            return selim.validators.ValidateNumber(value, column);
+        case 'date':
+            return selim.validators.ValidateDate(value, column);
 
-           let createListener = (type) => {
-               if (types.find(event_type => event_type === type) !== undefined) {
-                   return;
-               }
-               document.addEventListener(type, dispatch);
-               types.push(type);
-           };
+        case 'selector':
+            return selim.validators.validateBoolean(value, column);
 
-           this.add = (target, event_type, fun) => {
-               createListener(event_type);
-               subs.push({
-                   target: target,
-                   type: event_type,
-                   execute: fun
-               });
-           };
+        case 'boolean':
+            return selim.validators.validateBoolean(value, column);
+        default:
+            return { valid: true, msg: '' };
+    }
+};
+
+selim.validators.IsValidDataType = (value, column) => {
+
+    if ((value === null) && (column.required !== true)) {
+        return true;
+    }
+
+    switch (column.type) {
+
+        case 'selector':
+            return value === true || value === false;
+        case 'number':
+            return selim.utils.isNumber(value);
+        case 'text':
+            return typeof value === 'string';
+        case 'date':
+            return value.constructor && value.constructor.name === 'Date';
+        case 'boolean':
+            return value === true || value === false;
+
+    }
+    return false;
+};
 
-       }
-   }; selim.validators.validate = (value, column) => {
-
 
-     if ((column.required === true) && (value === null)) {
+selim.validators.validateText = (value, column) => {
 
-         return { valid: false, msg: 'Value required' };
-     }
+    let result = { valid: false, msg: '' };
 
-     switch (column.type) {
-         case 'text':
-             return selim.validators.validateText(value, column);
 
-         case 'number':
-             return selim.validators.ValidateNumber(value, column);
-         case 'date':
-             return selim.validators.ValidateDate(value, column);
+    if ((typeof value !== 'string') && (value !== null)) {
+        result.msg = 'Value is not string';
+        return result;
+    }
+    if ((column.max !== undefined) && (value.length > column.max)) {
+        result.msg = 'Maximum length is ' + column.max;
+        return result;
+    }
 
-         case 'selector':
-             return selim.validators.validateBoolean(value, column);
+    if ((column.min !== undefined) && (value.length < column.min)) {
+        result.msg = 'Minimum length is ' + column.min;
+        return result;
+    }
 
-         case 'boolean':
-             return selim.validators.validateBoolean(value, column);
-         default:
-             return { valid: true, msg: '' };
-     }
- };
-
- selim.validators.IsValidDataType = (value, column) => {
-
-     if ((value === null) && (column.required !== true)) {
-         return true;
-     }
-
-     switch (column.type) {
+    if (column.in)
+        if (Array.isArray(column.in)) {
+
+            if (column.in.find(ele => ele === value) === undefined) {
+                result.msg = 'Value not in list';
+                return result;
+            }
+        } else {
+            throw 'Valid list is not array [ column name: ' + column.name;
+        }
+
+    result.valid = true;
+    return result;
+};
+
+selim.validators.validateBoolean = (value, column) => {
+    let result = { valid: false, msg: '' };
+
+    if ((column.required === true) && (value === null)) {
+        result.msg = 'Value required';
+        return result;
+    }
+
+    if ((value !== true) && (value !== false)) {
+        result.msg = 'Value is not boolean';
+        return result;
+    }
+
+    result.valid = true;
+    return result;
+};
+
+selim.validators.ValidateNumber = (value, column) => {
+
+    let result = { valid: false, msg: '' };
+
+    if ((column.required === true) && (value === null)) {
+        result.msg = 'Value required';
+        return result;
+    }
+
+    if (value === null) {
+        result.valid = true;
+        return result;
+    }
+
+
+    if (selim.utils.isNumber(value) !== true) {
+        result.msg = 'Value is not a number ';
+        return result;
+    }
+    if ((column.max !== undefined) && (value !== null) && (value > column.max)) {
+        result.msg = 'Maximum value is ' + column.max;
+        return result;
+    }
+    if ((column.min !== undefined) && (value !== null) && (value < column.min)) {
+        result.msg = 'Minimum value is ' + column.min;
+        return result;
+    }
+
+
+    if (column.in)
+        if (Array.isArray(column.in)) {
+
+            if (column.in.find(ele => ele === value) === undefined) {
+                result.msg = 'Value not in list';
+                return result;
+            }
+        } else {
+            throw 'Valid list is not array [ column name: ' + column.name;
+        }
 
-         case 'selector':
-             return value === true || value === false;
-         case 'number':
-             return selim.utils.isNumber(value);
-         case 'text':
-             return typeof value === 'string';
-         case 'date':
-             return value.constructor && value.constructor.name === 'Date';
-         case 'boolean':
-             return value === true || value === false;
-
-     }
-     return false;
- };
+    result.valid = true;
+    return result;
 
+};
 
- selim.validators.validateText = (value, column) => {
 
-     let result = { valid: false, msg: '' };
+selim.validators.ValidateDate = (value, column) => {
 
+    let result = { valid: false, msg: '' };
 
-     if ((typeof value !== 'string') && (value !== null)) {
-         result.msg = 'Value is not string';
-         return result;
-     }
-     if ((column.max !== undefined) && (value.length > column.max)) {
-         result.msg = 'Maximum length is ' + column.max;
-         return result;
-     }
+    if ((column.required === true) && (value === null)) {
+        result.msg = 'Value required';
 
-     if ((column.min !== undefined) && (value.length < column.min)) {
-         result.msg = 'Minimum length is ' + column.min;
-         return result;
-     }
+        return result;
+    }
+    if (value === null) {
+        result.valid = true;
+        return result;
+    }
 
-     if (column.in)
-         if (Array.isArray(column.in)) {
-
-             if (column.in.find(ele => ele === value) === undefined) {
-                 result.msg = 'Value not in list';
-                 return result;
-             }
-         } else {
-             throw 'Valid list is not array [ column name: ' + column.name;
-         }
-
-     result.valid = true;
-     return result;
- };
-
- selim.validators.validateBoolean = (value, column) => {
-     let result = { valid: false, msg: '' };
-
-     if ((column.required === true) && (value === null)) {
-         result.msg = 'Value required';
-         return result;
-     }
-
-     if ((value !== true) && (value !== false)) {
-         result.msg = 'Value is not boolean';
-         return result;
-     }
-
-     result.valid = true;
-     return result;
- };
-
- selim.validators.ValidateNumber = (value, column) => {
-
-     let result = { valid: false, msg: '' };
-
-     if ((column.required === true) && (value === null)) {
-         result.msg = 'Value required';
-         return result;
-     }
-
-     if (value === null) {
-         result.valid = true;
-         return result;
-     }
-
-
-     if (selim.utils.isNumber(value) !== true) {
-         result.msg = 'Value is not a number ';
-         return result;
-     }
-     if ((column.max !== undefined) && (value !== null) && (value > column.max)) {
-         result.msg = 'Maximum value is ' + column.max;
-         return result;
-     }
-     if ((column.min !== undefined) && (value !== null) && (value < column.min)) {
-         result.msg = 'Minimum value is ' + column.min;
-         return result;
-     }
-
-
-     if (column.in)
-         if (Array.isArray(column.in)) {
-
-             if (column.in.find(ele => ele === value) === undefined) {
-                 result.msg = 'Value not in list';
-                 return result;
-             }
-         } else {
-             throw 'Valid list is not array [ column name: ' + column.name;
-         }
+    if (!selim.utils.isDate(value)) {
+        result.msg = ' Invalid date ';
+        return result;
+    }
 
-     result.valid = true;
-     return result;
+    if (column.max) {
+        let max = column.max instanceof Date ? column.max : selim.utils.ParseDate(column.max);
+        if (!max instanceof Date) {
+            throw 'Invalid date value';
+            return;
+        }
 
- };
+        if (value.getTime() > max.getTime()) {
+            result.msg = ' Value is greater than maximum value ';
+            return result;
+        }
+    }
 
+    if (column.min) {
+        let min = column.max instanceof Date ? column.min : selim.utils.ParseDate(column.min);
+        if (!min instanceof Date) {
+            throw 'Invalid date value';
+            return;
+        }
 
- selim.validators.ValidateDate = (value, column) => {
+        if (value.getTime() < min.getTime()) {
+            result.msg = ' Value is less than minimum value ';
+            return result;
+        }
+    }
+    if (column.in)
+        if (Array.isArray(column.in)) {
 
-     let result = { valid: false, msg: '' };
+            if (column.in.find(ele => {
+                    if (ele.getTime() !== value.getTime())
+                        return undefined;
+                    else return value;
+                }) === undefined) {
+                result.msg = 'Value not in list';
+                return result;
+            }
+        } else {
+            throw 'Valid list is not array [ column name: ' + column.name;
+        }
+    result.valid = true;
+    return result;
 
-     if ((column.required === true) && (value === null)) {
-         result.msg = 'Value required';
 
-         return result;
-     }
-     if (value === null) {
-         result.valid = true;
-         return result;
-     }
+};
 
-     if (!selim.utils.isDate(value)) {
-         result.msg = ' Invalid date ';
-         return result;
-     }
 
-     if (column.max) {
-         let max = column.max instanceof Date ? column.max : selim.utils.ParseDate(column.max);
-         if (!max instanceof Date) {
-             throw 'Invalid date value';
-             return;
-         }
-
-         if (value.getTime() > max.getTime()) {
-             result.msg = ' Value is greater than maximum value ';
-             return result;
-         }
-     }
-
-     if (column.min) {
-         let min = column.max instanceof Date ? column.min : selim.utils.ParseDate(column.min);
-         if (!min instanceof Date) {
-             throw 'Invalid date value';
-             return;
-         }
-
-         if (value.getTime() < min.getTime()) {
-             result.msg = ' Value is less than minimum value ';
-             return result;
-         }
-     }
-     if (column.in)
-         if (Array.isArray(column.in)) {
-
-             if (column.in.find(ele => {
-                     if (ele.getTime() !== value.getTime())
-                         return undefined;
-                     else return value;
-                 }) === undefined) {
-                 result.msg = 'Value not in list';
-                 return result;
-             }
-         } else {
-             throw 'Valid list is not array [ column name: ' + column.name;
-         }
-     result.valid = true;
-     return result;
-
-
- };
-
-
- selim.validators.ValidateGridOptions = (options) => {
-
-     if (options === undefined) {
-         options = {};
-     }
-
-
-
-     if (options.read_only === undefined) {
-         options.read_only = false;
-     }
-
-     if (!options.hasOwnProperty('locale'))
-         options.locale = navigator.language;
-
-     if (!options.hasOwnProperty('input_date_separator'))
-         options.input_date_separator = '-';
-
-     if (!options.hasOwnProperty('input_date_format'))
-         options.input_date_format = 'YYYY-DD-MM';
-
-
-     if (!options.hasOwnProperty('insert_key'))
-         options.insert_key = 'shift+KeyI';
-
-     if (!options.hasOwnProperty('delete_key'))
-         options.delete_key = 'shift+KeyD|Delete';
-
-     if (!options.hasOwnProperty('unselect_key'))
-         options.unselect_key = 'shift+KeyU';
-
-     options.dml_out = options.dml_out || 'min';
-
-
- };
-
- selim.validators.validateMetaData = (columns, options) => {
-
-     let types = ['text', 'number', 'date', 'boolean', 'selector'];
-     let cols = columns.slice();
-     cols.forEach((column, index) => {
-         column.name = column.name || 'column' + index;
-         column.label = column.label || 'Column ' + index;
-
-
-         if (column.type) {
-             if (types.find(ele => ele === column.type) === undefined) {
-                 let type = column.type;
-                 if (selim.const.NumericDataTypes.find(ele => ele === type.trim().toUpperCase()) !== undefined) {
-                     column.user_type = type;
-                     column.type = 'number';
-
-                 } else {
-                     console.error('Invalid data type: ' + '  ' + column.type);
-                     return false;
-                 }
-
-             } else {
-                 column.type = column.type.trim().toLowerCase();
-             }
-         } else {
-             throw 'Undefined column type, column name:' + column.name
-         }
-
-         column.locale = column.locale || options.locale;
-         try {
-             column.locale = Intl.getCanonicalLocales(column.locale);
-         } catch (error) {
-             console.warn('Invalid locale value');
-             column.locale = navigator.language;
-         }
-
-
-         column.output_date_locale = column.output_date_locale || options.output_date_locale;
-
-         column.output_date_options = column.output_date_options || options.output_date_options;
-
-     });
-
-
-     let selector = {
-         name: 'row_selector',
-         type: 'selector',
-         label: options.selector_label || '',
-         default: false,
-         sortable: true,
-         width: '40px',
-         h_align: 'center',
-         v_align: 'middle',
-         display: false
-     };
-
-     if (options.selector === true) {
-         selector.display = true;
-         if (options.selector_start === true) {
-             cols.unshift(selector);
-         } else {
-             cols.push(selector);
-         }
-     } else {
-         cols.unshift(selector);
-     }
-     return cols;
- };selim.const.NumericDataTypes = ['INT', 'INTEGER', 'TINYINT', 'SMALLINT', 'MEDIUMINT', 'BIGINT', 'FLOAT', 'DOUBLE', 'DECIMAL'];
+selim.validators.ValidateGridOptions = (options) => {
+
+    if (options === undefined) {
+        options = {};
+    }
+
+
+
+    if (options.read_only === undefined) {
+        options.read_only = false;
+    }
+
+    if (!options.hasOwnProperty('locale'))
+        options.locale = navigator.language;
+
+    if (!options.hasOwnProperty('input_date_separator'))
+        options.input_date_separator = '-';
+
+    if (!options.hasOwnProperty('input_date_format'))
+        options.input_date_format = 'YYYY-DD-MM';
+
+
+    if (!options.hasOwnProperty('insert_key'))
+        options.insert_key = 'shift+KeyI';
+
+    if (!options.hasOwnProperty('delete_key'))
+        options.delete_key = 'shift+KeyD|Delete';
+
+    if (!options.hasOwnProperty('unselect_key'))
+        options.unselect_key = 'shift+KeyU';
+
+    options.dml_out = options.dml_out || 'min';
+
+
+};
+
+selim.validators.validateMetaData = (columns, options) => {
+
+    let types = ['text', 'number', 'date', 'boolean', 'selector'];
+    let cols = columns.slice();
+    cols.forEach((column, index) => {
+        column.name = column.name || 'column' + index;
+        column.label = column.label || 'Column ' + index;
+
+
+        if (column.type) {
+            if (types.find(ele => ele === column.type) === undefined) {
+                let type = column.type;
+                if (selim.const.NumericDataTypes.find(ele => ele === type.trim().toUpperCase()) !== undefined) {
+                    column.user_type = type;
+                    column.type = 'number';
+
+                } else {
+                    console.error('Invalid data type: ' + '  ' + column.type);
+                    return false;
+                }
+
+            } else {
+                column.type = column.type.trim().toLowerCase();
+            }
+        } else {
+            throw 'Undefined column type, column name:' + column.name
+        }
+
+        column.locale = column.locale || options.locale;
+        try {
+            column.locale = Intl.getCanonicalLocales(column.locale);
+        } catch (error) {
+            console.warn('Invalid locale value');
+            column.locale = navigator.language;
+        }
+
+
+        column.output_date_locale = column.output_date_locale || options.output_date_locale;
+
+        column.output_date_options = column.output_date_options || options.output_date_options;
+
+    });
+
+
+    let selector = {
+        name: 'row_selector',
+        type: 'selector',
+        label: options.selector_label || '',
+        default: false,
+        sortable: true,
+        width: '40px',
+        h_align: 'center',
+        v_align: 'middle',
+        display: false
+    };
+
+    if (options.selector === true) {
+        selector.display = true;
+        if (options.selector_start === true) {
+            cols.unshift(selector);
+        } else {
+            cols.push(selector);
+        }
+    } else {
+        cols.unshift(selector);
+    }
+    return cols;
+};
+selim.const.NumericDataTypes = ['INT', 'INTEGER', 'TINYINT', 'SMALLINT', 'MEDIUMINT', 'BIGINT', 'FLOAT', 'DOUBLE', 'DECIMAL'];
 
 
 selim.DataModel = class DataModel {
@@ -1220,453 +1223,457 @@ selim.DataModel = class DataModel {
         return this.getData();
     };
 
-}; selim.viewers.NumberViewer = class extends selim.base.BaseColumnViewer {
+};
+selim.viewers.NumberViewer = class extends selim.base.BaseColumnViewer {
 
-     constructor(column) {
+    constructor(column) {
 
-         super(column);
+        super(column);
 
-         /**
-          * @override
-          */
-         this.display = () => {
+        /**
+         * @override
+         */
+        this.display = () => {
 
-             let result = selim.validators.ValidateNumber(this.value, column);
-             if (result.valid === true && this.value !== null) {
-                 this.container.innerText = Intl.NumberFormat(this.locale, this.options).format(this.value);
-             } else {
+            let result = selim.validators.ValidateNumber(this.value, column);
+            if (result.valid === true && this.value !== null) {
+                this.container.innerText = Intl.NumberFormat(this.locale, this.options).format(this.value);
+            } else {
 
-                 this.container.innerText = this.value;
-
-             }
-
-         };
-
-     }
- };
-
-
- selim.viewers.DateViewer = class extends selim.base.BaseColumnViewer {
-
-     constructor(column) {
-
-         super(column);
-
-         /**
-          * @override
-          */
-         this.display = () => {
-             if (this.value != null) {
-                 this.container.innerText = new Intl.DateTimeFormat(this.locale, this.options).format(this.value).toString();
-             } else
-                 this.container.innerText = this.value;
-         };
-     }
- };
-
-
- selim.viewers.DefaultViewer = class extends selim.base.BaseColumnViewer {
-
-     constructor(column) {
-         super(column);
-
-         /**
-          * @override
-          */
-         this.display = () => {
-             this.container.innerText = this.value;
-         };
-     }
- };
-
- selim.viewers.SelectViewer = class extends selim.base.BaseColumnViewer {
-
-     constructor(column, dataRow) {
-         super(column);
-         let input = selim.$c('input');
-         input.type = 'checkbox';
-         input.className = 'editor-control';
-         this.container.classList.add('selector');
-         this.container.appendChild(input);
-
-         input.addEventListener('click', event => {
-             event.stopPropagation();
-             dataRow[column.name] = input.checked;
-             dataRow.selected = input.checked;
-         });
-
-         /**
-          * @override
-          */
-         this.display = () => {
-             input.checked = this.value;
-         };
-     }
- };
-
-
- selim.viewers.BooleanViewer = class extends selim.base.BaseColumnViewer {
-
-     constructor(column) {
-         super(column);
-
-         let box = selim.$c('div');
-         this.container.appendChild(box);
-         this.container.style.display = 'flex';
-         this.container.style.justifyContent = 'center';
-
-         /**
-          * @override
-          */
-         this.display = () => {
-
-             if (this.value === true) {
-                 box.innerHTML = '✓';
-                 box.style.fontWight = 'bolder';
-                 box.style.color = 'green';
-             } else if (this.value === false) {
-                 box.innerHTML = '✗';
-                 box.style.color = 'red';
-             }
-         };
-
-     }
- }; selim.editors.DefaultEditor = class DefaultEditor extends selim.base.BaseEditor {
-
-     constructor(column) {
-         super(column);
-         let input = selim.$c('input');
-         input.type = 'text';
-         input.className = 'editor-control';
-         this.container.appendChild(input);
-
-         this.init = (dataRow, callBack) => {
-             input.value = dataRow[column.name];
-             input.focus();
-
-             let setValue = () => {
-                 dataRow[column.name] = input.value;
-                 this.dismiss(callBack);
-             };
-
-             input.addEventListener('focusout', event => {
-                 if (this.dismissed) return;
-                 setValue();
-             });
-
-             input.addEventListener('keydown', event => {
-                 event.stopPropagation();
-
-                 if (selim.utils.getKeyCode(event) === 'Enter') {
-                     setValue();
-                 }
-             });
-
-             this.escaped = () => {
-                 this.dismiss(callBack);
-             }
-         };
-     }
- };
-
- selim.editors.TextEditor = class TextEditor extends selim.base.BaseEditor {
-
-     constructor(column) {
-         super(column);
-         let input = selim.$c('textArea');
-         this.container.appendChild(input);
-
-         input.style.zIndex = '999999';
-
-         this.init = (dataRow, callBack) => {
-             input.value = dataRow[column.name];
-             input.focus();
-
-             let setValue = (value) => {
-                 dataRow[column.name] = value === undefined ? input.value.trim() : value;
-                 this.dismiss(callBack);
-             };
-
-             input.addEventListener('focusout', event => {
-                 if (this.dismissed === true) return;
-                 setValue();
-             });
-
-             input.addEventListener('keydown', event => {
-                 event.stopPropagation();
-
-                 if (selim.utils.getKeyCode(event) === 'Delete') {
-                     setValue(null);
-                 }
-             });
-
-
-             this.escaped = () => {
-                 this.dismiss(callBack);
-             }
-         };
-     }
- };
-
- selim.editors.SingleLineEditor = class TextEditor extends selim.base.BaseEditor {
-
-     constructor(column) {
-         super(column);
-         let input = selim.$c('input');
-         input.type = 'text';
-         input.className = "editor-control";
-
-         this.container.appendChild(input);
-
-         this.init = (dataRow, callBack) => {
-             input.value = dataRow[column.name];
-             input.focus();
-
-             let setValue = (value) => {
-                 dataRow[column.name] = value === undefined ? input.value.trim() : value;
-                 this.dismiss(callBack);
-             };
-
-             input.addEventListener('focusout', event => {
-                 if (this.dismissed === true) return;
-                 setValue();
-             });
-
-             input.addEventListener('keydown', event => {
-                 event.stopPropagation();
-
-                 if (selim.utils.getKeyCode(event) === 'Enter') {
-                     setValue();
-                 }
-                 if (selim.utils.getKeyCode(event) === 'Delete') {
-                     setValue(null);
-                 }
-             });
-
-
-             this.escaped = () => {
-                 this.dismiss(callBack);
-             }
-         };
-     }
- };
-
- selim.editors.BooleanEditor = class BooleanEditor extends selim.base.BaseEditor {
-
-     constructor(column) {
-         super(column);
-         let input = selim.$c('input');
-         let wrapper = selim.$c('div');
-         input.setAttribute('type', 'checkbox');
-         wrapper.appendChild(input);
-         this.container.appendChild(wrapper);
-         input.style.width = '1.2em';
-         input.style.height = '1.2em';
-         this.init = (dataRow, callBack) => {
-
-             input.checked = dataRow[column.name];
-             input.focus();
-
-             let setValue = () => {
-                 dataRow[column.name] = input.checked;
-                 this.dismiss(callBack);
-             };
-
-             input.addEventListener('focusout', event => {
-                 if (this.dismissed) return;
-                 setValue();
-             });
-
-             input.addEventListener('keydown', event => {
-                 event.stopPropagation();
-
-                 if (selim.utils.getKeyCode(event) === 'Enter') {
-                     setValue();
-                 }
-             });
-
-             this.escaped = () => {
-                 this.dismiss(callBack);
-             }
-         };
-     }
- };
-
- selim.editors.OptionsEditor = class TextEditor extends selim.base.BaseEditor {
-
-     constructor(column) {
-         super(column);
-         let input = selim.$c('select');
-         this.container.appendChild(input);
-         input.className = "editor-control";
-
-         if (column.dataList) {
-             let option = null;
-             for (let x = 0; x < column.dataList.length; x++) {
-                 if (Array.isArray(column.dataList[0])) {
-                     option = new Option(column.dataList[x][0], column.dataList[x][1]);
-                 } else {
-                     option = new Option(column.dataList[x].text, column.dataList[x].value);
-                 }
-                 input.add(option);
-             }
-         }
-
-         if (column.selectedIndex) {
-             input.selectedIndex = column.selectedIndex;
-         }
-
-         this.init = (dataRow, callBack) => {
-             input.value = dataRow[column.name];
-             input.focus();
-
-             let setValue = () => {
-                 if (input.selectedIndex > -1) {
-                     try {
-                         if (column.mapping) {
-                             if (column.mapping.value)
-                                 dataRow[column.mapping.value] = input.value;
-                             if (column.mapping.text)
-                                 dataRow[column.mapping.text] = input.options[input.selectedIndex].text;
-                         } else {
-                             dataRow[column.name] = input.value;
-                         }
-                     } catch (error) { console.error('Mapping error: '); }
-                 }
-                 this.dismiss(callBack);
-             };
-
-             input.addEventListener('focusout', event => {
-                 if (this.dismissed) return;
-                 setValue();
-             });
-
-             input.addEventListener('keydown', event => {
-                 event.stopPropagation();
-                 if (selim.utils.getKeyCode(event) === 'Enter') {
-                     setValue();
-                 }
-             });
-
-             this.escaped = () => {
-                 this.dismiss(callBack);
-             }
-         };
-     }
- };
-
- selim.editors.NumberEditor = class NumberEditor extends selim.base.BaseEditor {
-
-     constructor(column) {
-         super(column);
-         let input = selim.$c('input');
-         input.type = 'number';
-         input.className = "editor-control";
-         this.container.appendChild(input);
-
-         if (column.step) {
-
-             input.setAttribute('step', column.step);
-         }
-         if (column.max) {
-             input.max = column.max;
-         }
-         if (column.min) {
-             input.min = column.min;
-         }
-
-         this.init = (dataRow, callBack) => {
-
-             input.value = dataRow[column.name];
-             input.focus();
-
-             let setValue = (value) => {
-                 value = value === undefined ? input.value : value;
-                 if (value === '') {
-                     this.dismiss(callBack);
-                     return;
-                 }
-
-                 dataRow[column.name] = value === null ? null : Number(value);
-                 this.dismiss(callBack);
-             };
-
-             input.addEventListener('keydown', event => {
-                 event.stopPropagation();
-                 if (selim.utils.getKeyCode(event) === 'Enter') {
-                     setValue(input.value);
-                 } else if (selim.utils.getKeyCode(event) === 'Delete') {
-                     input.value = null;
-                     setValue(null);
-                 }
-             });
-
-             input.addEventListener('focusout', event => {
-                 if (this.dismissed) return;
-                 setValue(input.value);
-
-             });
-
-             this.escaped = () => {
-                 this.dismiss(callBack);
-             }
-         };
-     }
- };
-
- selim.editors.DateEditor = class DateEditor extends selim.base.BaseEditor {
-
-     constructor(column) {
-         super(column);
-         let input = selim.$c('input');
-         input.type = 'date';
-         input.className = 'editor-control';
-         this.container.appendChild(input);
-
-         if (column.max) {
-             input.setAttribute('max', column.max);
-         }
-
-         if (column.min) {
-             input.setAttribute('min', column.min);
-         }
-
-         this.init = (dataRow, callBack) => {
-
-             if (dataRow[column.name] !== null && dataRow[column.name].constructor && dataRow[column.name].constructor.name === 'Date')
-                 input.value = selim.utils.getDateString(dataRow[column.name]);
-             input.focus();
-
-             let setValue = (value) => {
-                 let date = value === undefined ? selim.utils.ParseDate(input.value, '-', 'YYYY-MM-DD') : value;
-                 dataRow[column.name] = date;
-                 this.dismiss(callBack);
-             };
-
-             input.addEventListener('keydown', event => {
-                 event.stopPropagation();
-
-                 if (this.dismissed === true) return;
-                 if (selim.utils.getKeyCode(event) === 'Enter') {
-                     setValue();
-                 }
-                 if (selim.utils.getKeyCode(event) === 'Delete') {
-                     setValue(null);
-                 }
-             });
-
-             input.addEventListener('focusout', event => {
-                 if (this.dismissed) return;
-                 setValue();
-             });
-
-             this.escaped = () => {
-                 this.dismiss(callBack);
-             }
-
-         };
-     }
- };selim.ViewerFactory = (column, dataRow) => {
+                this.container.innerText = this.value;
+
+            }
+
+        };
+
+    }
+};
+
+
+selim.viewers.DateViewer = class extends selim.base.BaseColumnViewer {
+
+    constructor(column) {
+
+        super(column);
+
+        /**
+         * @override
+         */
+        this.display = () => {
+            if (this.value != null) {
+                this.container.innerText = new Intl.DateTimeFormat(this.locale, this.options).format(this.value).toString();
+            } else
+                this.container.innerText = this.value;
+        };
+    }
+};
+
+
+selim.viewers.DefaultViewer = class extends selim.base.BaseColumnViewer {
+
+    constructor(column) {
+        super(column);
+
+        /**
+         * @override
+         */
+        this.display = () => {
+            this.container.innerText = this.value;
+        };
+    }
+};
+
+selim.viewers.SelectViewer = class extends selim.base.BaseColumnViewer {
+
+    constructor(column, dataRow) {
+        super(column);
+        let input = selim.$c('input');
+        input.type = 'checkbox';
+        input.className = 'editor-control';
+        this.container.classList.add('selector');
+        this.container.appendChild(input);
+
+        input.addEventListener('click', event => {
+            event.stopPropagation();
+            dataRow[column.name] = input.checked;
+            dataRow.selected = input.checked;
+        });
+
+        /**
+         * @override
+         */
+        this.display = () => {
+            input.checked = this.value;
+        };
+    }
+};
+
+
+selim.viewers.BooleanViewer = class extends selim.base.BaseColumnViewer {
+
+    constructor(column) {
+        super(column);
+
+        let box = selim.$c('div');
+        this.container.appendChild(box);
+        this.container.style.display = 'flex';
+        this.container.style.justifyContent = 'center';
+
+        /**
+         * @override
+         */
+        this.display = () => {
+
+            if (this.value === true) {
+                box.innerHTML = '✓';
+                box.style.fontWight = 'bolder';
+                box.style.color = 'green';
+            } else if (this.value === false) {
+                box.innerHTML = '✗';
+                box.style.color = 'red';
+            }
+        };
+
+    }
+};
+selim.editors.DefaultEditor = class DefaultEditor extends selim.base.BaseEditor {
+
+    constructor(column) {
+        super(column);
+        let input = selim.$c('input');
+        input.type = 'text';
+        input.className = 'editor-control';
+        this.container.appendChild(input);
+
+        this.init = (dataRow, callBack) => {
+            input.value = dataRow[column.name];
+            input.focus();
+
+            let setValue = () => {
+                dataRow[column.name] = input.value;
+                this.dismiss(callBack);
+            };
+
+            input.addEventListener('focusout', event => {
+                if (this.dismissed) return;
+                setValue();
+            });
+
+            input.addEventListener('keydown', event => {
+                event.stopPropagation();
+
+                if (selim.utils.getKeyCode(event) === 'Enter') {
+                    setValue();
+                }
+            });
+
+            this.escaped = () => {
+                this.dismiss(callBack);
+            }
+        };
+    }
+};
+
+selim.editors.TextEditor = class TextEditor extends selim.base.BaseEditor {
+
+    constructor(column) {
+        super(column);
+        let input = selim.$c('textArea');
+        this.container.appendChild(input);
+
+        input.style.zIndex = '999999';
+
+        this.init = (dataRow, callBack) => {
+            input.value = dataRow[column.name];
+            input.focus();
+
+            let setValue = (value) => {
+                dataRow[column.name] = value === undefined ? input.value.trim() : value;
+                this.dismiss(callBack);
+            };
+
+            input.addEventListener('focusout', event => {
+                if (this.dismissed === true) return;
+                setValue();
+            });
+
+            input.addEventListener('keydown', event => {
+                event.stopPropagation();
+
+                if (selim.utils.getKeyCode(event) === 'Delete') {
+                    setValue(null);
+                }
+            });
+
+
+            this.escaped = () => {
+                this.dismiss(callBack);
+            }
+        };
+    }
+};
+
+selim.editors.SingleLineEditor = class TextEditor extends selim.base.BaseEditor {
+
+    constructor(column) {
+        super(column);
+        let input = selim.$c('input');
+        input.type = 'text';
+        input.className = "editor-control";
+
+        this.container.appendChild(input);
+
+        this.init = (dataRow, callBack) => {
+            input.value = dataRow[column.name];
+            input.focus();
+
+            let setValue = (value) => {
+                dataRow[column.name] = value === undefined ? input.value.trim() : value;
+                this.dismiss(callBack);
+            };
+
+            input.addEventListener('focusout', event => {
+                if (this.dismissed === true) return;
+                setValue();
+            });
+
+            input.addEventListener('keydown', event => {
+                event.stopPropagation();
+
+                if (selim.utils.getKeyCode(event) === 'Enter') {
+                    setValue();
+                }
+                if (selim.utils.getKeyCode(event) === 'Delete') {
+                    setValue(null);
+                }
+            });
+
+
+            this.escaped = () => {
+                this.dismiss(callBack);
+            }
+        };
+    }
+};
+
+selim.editors.BooleanEditor = class BooleanEditor extends selim.base.BaseEditor {
+
+    constructor(column) {
+        super(column);
+        let input = selim.$c('input');
+        let wrapper = selim.$c('div');
+        wrapper.className = "wrapper-center"
+        input.setAttribute('type', 'checkbox');
+        wrapper.appendChild(input);
+        this.container.appendChild(wrapper);
+        input.style.width = '1.2em';
+        input.style.height = '1.2em';
+        this.init = (dataRow, callBack) => {
+
+            input.checked = dataRow[column.name];
+            input.focus();
+
+            let setValue = () => {
+                dataRow[column.name] = input.checked;
+                this.dismiss(callBack);
+            };
+
+            input.addEventListener('focusout', event => {
+                if (this.dismissed) return;
+                setValue();
+            });
+
+            input.addEventListener('keydown', event => {
+                event.stopPropagation();
+
+                if (selim.utils.getKeyCode(event) === 'Enter') {
+                    setValue();
+                }
+            });
+
+            this.escaped = () => {
+                this.dismiss(callBack);
+            }
+        };
+    }
+};
+
+selim.editors.OptionsEditor = class TextEditor extends selim.base.BaseEditor {
+
+    constructor(column) {
+        super(column);
+        let input = selim.$c('select');
+        this.container.appendChild(input);
+        input.className = "editor-control";
+
+        if (column.dataList) {
+            let option = null;
+            for (let x = 0; x < column.dataList.length; x++) {
+                if (Array.isArray(column.dataList[0])) {
+                    option = new Option(column.dataList[x][0], column.dataList[x][1]);
+                } else {
+                    option = new Option(column.dataList[x].text, column.dataList[x].value);
+                }
+                input.add(option);
+            }
+        }
+
+        if (column.selectedIndex) {
+            input.selectedIndex = column.selectedIndex;
+        }
+
+        this.init = (dataRow, callBack) => {
+            input.value = dataRow[column.name];
+            input.focus();
+
+            let setValue = () => {
+                if (input.selectedIndex > -1) {
+                    try {
+                        if (column.mapping) {
+                            if (column.mapping.value)
+                                dataRow[column.mapping.value] = input.value;
+                            if (column.mapping.text)
+                                dataRow[column.mapping.text] = input.options[input.selectedIndex].text;
+                        } else {
+                            dataRow[column.name] = input.value;
+                        }
+                    } catch (error) { console.error('Mapping error: '); }
+                }
+                this.dismiss(callBack);
+            };
+
+            input.addEventListener('focusout', event => {
+                if (this.dismissed) return;
+                setValue();
+            });
+
+            input.addEventListener('keydown', event => {
+                event.stopPropagation();
+                if (selim.utils.getKeyCode(event) === 'Enter') {
+                    setValue();
+                }
+            });
+
+            this.escaped = () => {
+                this.dismiss(callBack);
+            }
+        };
+    }
+};
+
+selim.editors.NumberEditor = class NumberEditor extends selim.base.BaseEditor {
+
+    constructor(column) {
+        super(column);
+        let input = selim.$c('input');
+        input.type = 'number';
+        input.className = "editor-control";
+        this.container.appendChild(input);
+
+        if (column.step) {
+
+            input.setAttribute('step', column.step);
+        }
+        if (column.max) {
+            input.max = column.max;
+        }
+        if (column.min) {
+            input.min = column.min;
+        }
+
+        this.init = (dataRow, callBack) => {
+
+            input.value = dataRow[column.name];
+            input.focus();
+
+            let setValue = (value) => {
+                value = value === undefined ? input.value : value;
+                if (value === '') {
+                    this.dismiss(callBack);
+                    return;
+                }
+
+                dataRow[column.name] = value === null ? null : Number(value);
+                this.dismiss(callBack);
+            };
+
+            input.addEventListener('keydown', event => {
+                event.stopPropagation();
+                if (selim.utils.getKeyCode(event) === 'Enter') {
+                    setValue(input.value);
+                } else if (selim.utils.getKeyCode(event) === 'Delete') {
+                    input.value = null;
+                    setValue(null);
+                }
+            });
+
+            input.addEventListener('focusout', event => {
+                if (this.dismissed) return;
+                setValue(input.value);
+
+            });
+
+            this.escaped = () => {
+                this.dismiss(callBack);
+            }
+        };
+    }
+};
+
+selim.editors.DateEditor = class DateEditor extends selim.base.BaseEditor {
+
+    constructor(column) {
+        super(column);
+        let input = selim.$c('input');
+        input.type = 'date';
+        input.className = 'editor-control';
+        this.container.appendChild(input);
+
+        if (column.max) {
+            input.setAttribute('max', column.max);
+        }
+
+        if (column.min) {
+            input.setAttribute('min', column.min);
+        }
+
+        this.init = (dataRow, callBack) => {
+
+            if (dataRow[column.name] !== null && dataRow[column.name].constructor && dataRow[column.name].constructor.name === 'Date')
+                input.value = selim.utils.getDateString(dataRow[column.name]);
+            input.focus();
+
+            let setValue = (value) => {
+                let date = value === undefined ? selim.utils.ParseDate(input.value, '-', 'YYYY-MM-DD') : value;
+                dataRow[column.name] = date;
+                this.dismiss(callBack);
+            };
+
+            input.addEventListener('keydown', event => {
+                event.stopPropagation();
+
+                if (this.dismissed === true) return;
+                if (selim.utils.getKeyCode(event) === 'Enter') {
+                    setValue();
+                }
+                if (selim.utils.getKeyCode(event) === 'Delete') {
+                    setValue(null);
+                }
+            });
+
+            input.addEventListener('focusout', event => {
+                if (this.dismissed) return;
+                setValue();
+            });
+
+            this.escaped = () => {
+                this.dismiss(callBack);
+            }
+
+        };
+    }
+};
+selim.ViewerFactory = (column, dataRow) => {
 
     let viewer = null;
 
@@ -2386,7 +2393,8 @@ selim.DataGrid = class DataGrid extends selim.base.BaseDataTable {
         return true;
     }
 
-};selim.HeaderCell = class HeaderCell {
+};
+selim.HeaderCell = class HeaderCell {
     constructor(column, cellIndex, clicked) {
 
         let cell = selim.$c('td');

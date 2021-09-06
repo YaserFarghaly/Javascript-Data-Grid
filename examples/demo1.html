@@ -16,27 +16,24 @@
     <script>
         function mountGrid() {
             //  columns metadata defined in metadata.js
-            let data = [
-                ["KL567", "Product one", 65, 76]
-            ];
+            let data = [];
             let myGrid = new selim.DataGrid(columns, data);
-
             /**
              * @Override
              **/
             myGrid.callBack['post-edit'] = (value, column, dataRow) => {
-
-                // This calculation code is for demostration only
-                dataRow.total = dataRow.price * dataRow.quantity;
-
+                // This calculation code is for demonstration only
+                dataRow.total = dataRow.taxable === true ? dataRow.price * dataRow.quantity * 1.2 : dataRow.price * dataRow.quantity;
             };
-
+            myGrid.callBack['post-insert'] = (dataRow) => {
+                // This calculation code is for demonstration only
+                dataRow.total = dataRow.taxable === true ? dataRow.price * dataRow.quantity * 1.2 : dataRow.price * dataRow.quantity;
+            };
             myGrid.mount(selim.$g('grid-div'));
 
             selim.$g('myButton').addEventListener('click', () => {
                 alert(JSON.stringify(myGrid.getChanges()));
             });
-
         }
     </script>
 </head>
