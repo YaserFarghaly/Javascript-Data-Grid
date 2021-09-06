@@ -16,6 +16,13 @@
     height: 1.4em;
 }
 
+.wrapper-center {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .gridContainer {
     display: inline-block;
     padding: .3em;
@@ -41,8 +48,6 @@ table tr:hover {
     display: flex;
     top: 0px;
     left: 0px;
-    width: -webkit-fill-available;
-    width: -moz-available;
     height: 100%;
     max-height: 2em;
     background-color: transparent;
