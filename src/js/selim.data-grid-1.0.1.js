@@ -524,7 +524,6 @@ Object.defineProperty(selim.base, 'BaseDataTable', {
                 set(clbk) {
                     postInsert = clbk;
                     self.onMethod('post-insert');
-
                 }
 
             });
@@ -584,6 +583,7 @@ selim.EventRegister = class {
 
     }
 };
+
 selim.validators.validate = (value, column) => {
 
 
@@ -2392,8 +2392,8 @@ selim.DataGrid = class DataGrid extends selim.base.BaseDataTable {
     get preventScroll() {
         return true;
     }
-
 };
+
 selim.HeaderCell = class HeaderCell {
     constructor(column, cellIndex, clicked) {
 
@@ -2411,8 +2411,6 @@ selim.HeaderCell = class HeaderCell {
 
         cell.style.width = column.width || 'auto';
         cell.style.maxWidth = column.width || 'auto';
-
-
 
         _container.className = 'header-container';
         _text.className = 'exp';
