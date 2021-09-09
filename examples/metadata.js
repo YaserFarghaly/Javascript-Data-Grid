@@ -16,7 +16,7 @@ let columns = [{
     name: 'price',
     label: 'Unit Price',
     type: 'number',
-    options: { style: 'currency', currency: 'USD', minimumFractionDigits: 2 },
+    options: { style: 'currency', currency: 'GBP', minimumFractionDigits: 2 },
     width: '7em',
     step: 0.10
 
@@ -38,7 +38,7 @@ let columns = [{
     label: 'Total',
     name: 'total',
     type: 'number',
-    options: { style: 'currency', currency: 'USD', minimumFractionDigits: 2 },
+    options: { style: 'currency', currency: 'GBP', minimumFractionDigits: 2 },
     computed: true,
     width: '7em',
     read_only: true
