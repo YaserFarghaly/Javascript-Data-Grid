@@ -70,32 +70,16 @@ selim.utils.getClass = (cname, context) => {
 
 selim.utils.execute = (function_name, context, ...args) => {
 
-    let namespaces = function_name.split(".");
-    let name = namespaces.pop();
-    namespaces.forEach(element => {
-        context = context[element];
-
-    });
-
-    if ((!context || !context[name])) {
+    context = selim.utils.getClass(function_name, context);
+    if (context === undefined) {
         return undefined;
-    };
-    return context[name].apply(context, args);
+    }
+    return context.apply(context, args);
 };
 
 selim.utils.isNumber = (value) => {
 
-    if (typeof value === 'string') {
-        return false;
-    }
-    if (value === '' || value === null || value === true || value === false || isNaN(value)) {
-        return false;
-    }
-    if (value.constructor && value.constructor.name === 'Date') {
-        return false;
-    }
-
-    return true;
+    return typeof value === 'number';
 };
 
 selim.utils.removeChilds = (ele) => {
@@ -186,8 +170,6 @@ selim.utils.formatDate = (date, locale, options) => {
     if (date === null)
         return null;
 
-    console.log(locale + ' ' + options);
-
     return new Intl.DateTimeFormat(locale, options).format(date);
 
 };
@@ -198,8 +180,8 @@ selim.utils.compairText = (a, b, locale, options) => {
 
 selim.utils.compairNumber = (a, b) => {
 
-    if (a === null) return 1;
-    if (b === null) return -1;
+    if (a === null && b !== null) return 1;
+    if (b === null && a !== null) return -1;
     if (a === null && b === null) return 0;
     if (a > b)
         return 1;
