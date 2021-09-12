@@ -61,6 +61,12 @@ Be carfull as javascript has some serious issues, so I recomend using library su
 
 ------
 
+### Compiling
+```console
+java -jar compiler.jar --js selim.data-grid-1.0.1.js --js_output_file selim.data-grid-1.0.1-compiled.js
+```
+----
+
 ### Contribution
 Just contact me to improve or refactoring the grid and documentation.
 
