@@ -72,6 +72,8 @@ Just contact me to improve or refactoring the grid and documentation.
 
 ----
 
+### Overview
+
 ![Grid](https://github.com/YaserFarghaly/Javascript-Data-Grid/wiki/other/demo-1.png "DataGrid attached to document body")
 
 
