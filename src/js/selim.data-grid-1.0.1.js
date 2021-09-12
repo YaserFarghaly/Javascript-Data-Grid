@@ -53,6 +53,14 @@ Object.defineProperty(selim, "data", {
     writable: true
 });
 
+Object.defineProperty(selim.const, "NumericDataTypes", {
+    value: ['INT', 'INTEGER', 'TINYINT', 'SMALLINT', 'MEDIUMINT', 'BIGINT', 'FLOAT', 'DOUBLE', 'DECIMAL'],
+    writable: false
+});
+
+
+
+
 selim.utils.getClass = (cname, context) => {
     let namespaces = cname.split(".");
     let name = namespaces.pop();
@@ -217,7 +225,7 @@ selim.utils.ParseUnixDate = (integer) => {
 
     let len = 13 - ('' + integer).length;
     integer = len > 0 ? integer * Math.pow(10, len) : integer;
-    str = integer < 0 ? integer * 10 : integer;
+    let str = integer < 0 ? integer * 10 : integer;
     let date = new Date(str);
     if (date == 'Invalid Date' || (date.constructor && date.constructor.name !== 'Date')) {
         console.error('Invalid Date string: ' + integer);
@@ -883,7 +891,6 @@ selim.validators.validateMetaData = (columns, options) => {
     }
     return cols;
 };
-selim.const.NumericDataTypes = ['INT', 'INTEGER', 'TINYINT', 'SMALLINT', 'MEDIUMINT', 'BIGINT', 'FLOAT', 'DOUBLE', 'DECIMAL'];
 
 
 selim.DataModel = class DataModel {
@@ -1451,12 +1458,13 @@ selim.editors.BooleanEditor = class BooleanEditor extends selim.base.BaseEditor 
         input.style.width = '1.2em';
         input.style.height = '1.2em';
         this.init = (dataRow, callBack) => {
-
             input.checked = dataRow[column.name];
             input.focus();
 
-            let setValue = () => {
-                dataRow[column.name] = input.checked;
+            let setValue = (value) => {
+                dataRow[column.name] = value === undefined ? input.checked : value;
+
+                // dataRow[column.name] = input.checked;
                 this.dismiss(callBack);
             };
 
@@ -1470,6 +1478,9 @@ selim.editors.BooleanEditor = class BooleanEditor extends selim.base.BaseEditor 
 
                 if (selim.utils.getKeyCode(event) === 'Enter') {
                     setValue();
+                }
+                if (selim.utils.getKeyCode(event) === 'Delete') {
+                    setValue(null);
                 }
             });
 
@@ -1849,7 +1860,6 @@ selim.GridCell = class GridCell {
         };
 
         this.showEditor = (event) => {
-
             if (dataRow.dataGrid.state.editing === true || column.type === 'selector') {
                 dataRow.dataGrid.state.editing = false;
                 return;
@@ -1889,7 +1899,7 @@ selim.GridCell = class GridCell {
 
         register.add(_cell, 'keydown', keyHandler);
         register.add(_cell, dataRow.dataGrid.options.edit_on || 'dblclick', this.showEditor);
-        //register.add(this.viewer.container, dataRow.dataGrid.options.edit_on || 'dblclick', this.showEditor);
+        register.add(this.viewer.container, dataRow.dataGrid.options.edit_on || 'dblclick', this.showEditor);
 
         this.mount = (ele) => {
             ele.appendChild(_cell);
