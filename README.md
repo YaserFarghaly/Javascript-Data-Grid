@@ -24,6 +24,7 @@ None
 - Separate Viewing, Editing and Validation components.
 - Highly flexible you  can easily and quickly write your own column viewers , column editors and column validators and reuse your code in multiple parts of your applications.
 - Internationalization, built-in support to localize your applications.
+- Small footprint only 34 KB.
 
 ---
 
